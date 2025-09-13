@@ -18,38 +18,41 @@ navLinks.addEventListener("click", () => {
   menuBtnIcon.setAttribute("class", "ri-menu-3-line");
 });
 
-// ===== SCROLL REVEAL OPTIONS =====
-const scrollRevealOption = {
-  distance: "60px",   // smoother, longer fly-in
-  origin: "bottom",
-  duration: 1500,     // slightly faster
-  opacity: 0,         // fade-in effect
-  easing: "ease-in-out", 
+// ===== SCROLL REVEAL BASE OPTIONS =====
+const baseOption = {
+  distance: "80px",
+  duration: 1500,
+  opacity: 0,
+  easing: "ease-in-out",
 };
 
 // ===== HEADER ANIMATIONS =====
-// Title flies in first
+// Title flies in from LEFT
 ScrollReveal().reveal(".header__container h1", {
-  ...scrollRevealOption,
+  ...baseOption,
+  origin: "left",
   delay: 500,
 });
 
-// Subtitle appears smoothly after title
+// Subtitle flies in from RIGHT
 ScrollReveal().reveal(".header__container p", {
-  ...scrollRevealOption,
+  ...baseOption,
+  origin: "right",
   delay: 1200,
 });
 
-// Buttons come last with a pop-in effect
+// Buttons fade+zoom last
 ScrollReveal().reveal(".header__container .header__btn", {
-  ...scrollRevealOption,
+  ...baseOption,
+  origin: "bottom",
   delay: 2000,
-  scale: 0.8,   // slight zoom-in
+  scale: 0.85, // pop effect
 });
 
-// Social icons reveal one by one
+// Social icons fade up one by one
 ScrollReveal().reveal(".socials li", {
-  ...scrollRevealOption,
+  ...baseOption,
+  origin: "bottom",
   delay: 2500,
   interval: 300,
 });
