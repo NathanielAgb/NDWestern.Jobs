@@ -16,6 +16,76 @@
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/images/favicon.png" />
+    <style>
+      /* Smooth transitions */
+      .hidden {
+        display: none;
+      }
+
+      .fly-out {
+        animation: flyOut 1s forwards;
+      }
+      .fly-in {
+        animation: flyIn 1s forwards;
+      }
+
+      @keyframes flyOut {
+        from {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        to {
+          opacity: 0;
+          transform: translateY(-50px);
+        }
+      }
+      @keyframes flyIn {
+        from {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Cards layout */
+      .openings__grid {
+        display: none;
+        margin-top: 50px;
+        gap: 30px;
+        justify-content: center;
+      }
+      .openings__card {
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+        overflow: hidden;
+        text-decoration: none;
+        color: inherit;
+        width: 300px;
+        transition: all 0.4s ease;
+      }
+      .openings__card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 24px rgba(0,0,0,0.2);
+      }
+      .openings__card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+      .openings__card h3 {
+        font-size: 1.5rem;
+        margin-top: 15px;
+      }
+      .openings__card p {
+        font-size: 0.95rem;
+        color: #555;
+        padding-bottom: 15px;
+      }
+    </style>
   </head>
   <body>
     <!-- HEADER -->
@@ -39,7 +109,7 @@
       </nav>
 
       <!-- HERO / LANDING HEADER -->
-      <div class="header__container">
+      <div class="header__container" id="hero-content">
         <h1>
           <span>ND</span>
           <span>Western Careers</span>
@@ -50,12 +120,10 @@
           industry.
         </p>
         <div class="header__btn">
-          <a href="openings.html" class="slide-link">
-            <button class="btn">
-              View Openings
-              <i class="ri-arrow-right-long-line"></i>
-            </button>
-          </a>
+          <button class="btn" id="view-openings">
+            View Openings
+            <i class="ri-arrow-right-long-line"></i>
+          </button>
         </div>
         <ul class="socials">
           <li><a href="#"><i class="ri-facebook-fill"></i></a></li>
@@ -64,10 +132,46 @@
           <li><a href="#"><i class="ri-instagram-line"></i></a></li>
         </ul>
       </div>
+
+      <!-- OPENINGS CARDS (hidden by default) -->
+      <div class="openings__grid container" id="openings-cards">
+        <!-- Internal -->
+        <a href="jobs.html" class="openings__card">
+          <img src="assets/images/header-banner1.jpg" alt="Internal Openings" />
+          <div class="p-4 text-center">
+            <h3>Internal Openings</h3>
+            <p>View all current internal career opportunities at ND Western.</p>
+          </div>
+        </a>
+        <!-- Referrals -->
+        <a href="internships.html" class="openings__card">
+          <img src="assets/images/header-banner.jpg" alt="Graduate Program" />
+          <div class="p-4 text-center">
+            <h3>Referrals & Graduate Program</h3>
+            <p>Explore internships and referral opportunities to grow with us.</p>
+          </div>
+        </a>
+      </div>
     </header>
 
-    <!-- ScrollReveal + Main JS -->
+    <!-- Scripts -->
     <script src="https://unpkg.com/scrollreveal"></script>
-    <script src="main.js"></script>
+    <script>
+      // Handle hero -> openings transition
+      const viewBtn = document.getElementById("view-openings");
+      const heroContent = document.getElementById("hero-content");
+      const openingsCards = document.getElementById("openings-cards");
+
+      viewBtn.addEventListener("click", () => {
+        // Fly out hero content
+        heroContent.classList.add("fly-out");
+        setTimeout(() => {
+          heroContent.style.display = "none";
+          // Show cards
+          openingsCards.style.display = "flex";
+          openingsCards.classList.add("fly-in");
+        }, 1000); // Wait for fly-out to finish
+      });
+    </script>
   </body>
 </html>
