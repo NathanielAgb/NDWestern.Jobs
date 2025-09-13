@@ -3,36 +3,69 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ND Western | Openings</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <title>ND Western | Careers</title>
+
+  <!-- Remixicon -->
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet" />
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Styles -->
   <link rel="stylesheet" href="styles.css" />
   <style>
-    /* Hero Banner */
-    .openings-hero {
+    /* HERO */
+    header.main {
       background: url("assets/images/header-banner.jpg") center/cover no-repeat;
-      min-height: 60vh;
+      min-height: 100vh;
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
       color: white;
-      position: relative;
     }
-    .openings-hero::after {
+    header.main::after {
       content: "";
       position: absolute;
       inset: 0;
       background: rgba(0,0,0,0.55);
     }
-    .openings-hero .hero-content {
+    .header__container {
       position: relative;
       z-index: 2;
+      max-width: 800px;
+      margin: auto;
+      padding: 2rem;
+    }
+    .header__container h1 span:first-child {
+      display: block;
+      font-size: 3rem;
+      font-weight: 700;
+    }
+    .header__container h1 span:last-child {
+      display: block;
+      font-size: 2.2rem;
+      font-weight: 500;
+    }
+    .header__btn button {
+      margin-top: 20px;
+    }
+    .socials {
+      margin-top: 30px;
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      padding: 0;
+    }
+    .socials a {
+      color: white;
+      font-size: 1.5rem;
     }
 
-    /* Cards */
+    /* CARDS SECTION */
     .openings__grid {
-      margin-top: -80px; /* Float effect */
+      margin-top: -60px; /* float up */
+      padding: 80px 0;
     }
     .openings__card {
       background: #fff;
@@ -67,43 +100,61 @@
 <body>
   <!-- HEADER -->
   <header class="main">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-transparent position-absolute w-100">
       <div class="container">
-        <a href="index.html" class="navbar-brand">
+        <a href="#" class="navbar-brand">
           <img src="assets/logo.png" alt="ND Western Logo" height="40" />
         </a>
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-          <li class="nav-item"><a href="about.html" class="nav-link">About Us</a></li>
-          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-        </ul>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a href="#hero" class="nav-link text-white">Home</a></li>
+            <li class="nav-item"><a href="#openings" class="nav-link text-white">Openings</a></li>
+            <li class="nav-item"><a href="#about" class="nav-link text-white">About</a></li>
+          </ul>
+        </div>
       </div>
     </nav>
+
+    <div class="header__container" id="hero">
+      <h1><span>ND</span><span>Western Careers</span></h1>
+      <p>
+        Explore exciting opportunities with ND Western. Join a trusted team driving
+        innovation, growth, and success across the energy industry.
+      </p>
+      <div class="header__btn">
+        <a href="#openings">
+          <button class="btn btn-primary">
+            View Openings <i class="ri-arrow-right-long-line"></i>
+          </button>
+        </a>
+      </div>
+      <ul class="socials">
+        <li><a href="#"><i class="ri-facebook-fill"></i></a></li>
+        <li><a href="#"><i class="ri-twitter-fill"></i></a></li>
+        <li><a href="#"><i class="ri-linkedin-fill"></i></a></li>
+        <li><a href="#"><i class="ri-instagram-line"></i></a></li>
+      </ul>
+    </div>
   </header>
 
-  <!-- HERO -->
-  <section class="openings-hero">
-    <div class="hero-content">
-      <h1 class="fw-bold display-5">Choose Your Career Path</h1>
-      <p class="lead">Explore internal opportunities or join our graduate program.</p>
-    </div>
-  </section>
-
-  <!-- FLOATING CARDS -->
-  <section class="container openings__grid">
+  <!-- OPENINGS SECTION -->
+  <section id="openings" class="container openings__grid">
     <div class="row justify-content-center g-4">
       <!-- Internal -->
-      <div class="col-6">
+      <div class="col-md-6">
         <a href="jobs.html" class="openings__card">
-          <img src="assets/images/header-banner1.jpg" alt="Internal Openings" />
+          <img src="assets/images/header-banner.jpg" alt="Internal Openings" />
           <div class="p-4 text-center">
             <h3>Internal Openings</h3>
             <p>View all current internal career opportunities at ND Western.</p>
           </div>
         </a>
       </div>
-      <!-- Referrals/Graduate -->
-      <div class="col-6">
+      <!-- Referrals -->
+      <div class="col-md-6">
         <a href="internships.html" class="openings__card">
           <img src="assets/images/header-banner.jpg" alt="Graduate Program" />
           <div class="p-4 text-center">
@@ -115,6 +166,25 @@
     </div>
   </section>
 
+  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <script>
+    const baseOption = {
+      distance: "80px",
+      duration: 1500,
+      opacity: 0,
+      easing: "ease-in-out",
+    };
+
+    // Hero animations
+    ScrollReveal().reveal(".header__container h1", { ...baseOption, origin: "left", delay: 300 });
+    ScrollReveal().reveal(".header__container p", { ...baseOption, origin: "right", delay: 800 });
+    ScrollReveal().reveal(".header__btn", { ...baseOption, origin: "bottom", delay: 1300, scale: 0.9 });
+    ScrollReveal().reveal(".socials li", { ...baseOption, origin: "bottom", delay: 1700, interval: 200 });
+
+    // Cards animations
+    ScrollReveal().reveal(".openings__card", { ...baseOption, origin: "bottom", delay: 300, interval: 400 });
+  </script>
 </body>
 </html>
