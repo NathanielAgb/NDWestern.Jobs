@@ -1,273 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ND Western | Careers</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ND Western | Careers</title>
 
-  <!-- Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <!-- Remixicon -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
 
-  <!-- Remixicon + FontAwesome (icons used in card/date) -->
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css" />
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="assets/images/favicon.png" />
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.png" />
+    <style>
+      /* Smooth transitions */
+      .hidden {
+        display: none;
+      }
 
-  <style>
-    :root {
-      --nd-green: #99CC00;
-      --nd-green-dark: #88b800;
-      --text: #222;
-      --muted: #666;
-    }
+      .fly-out {
+        animation: flyOut 1s forwards;
+      }
+      .fly-in {
+        animation: flyIn 1s forwards;
+      }
 
-    /* ---------- Basic page & header ---------- */
-    body { font-family: "Segoe UI", Roboto, Arial, sans-serif; color:var(--text); margin:0; }
-    a { color: inherit; text-decoration: none; }
-    header.main {
-      min-height: 80vh;
-      background: url("assets/images/header-banner.jpg") center/cover no-repeat;
-      position: relative;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding: 3rem 1rem;
-      overflow: hidden;
-    }
-    header.main::after {
-      content:"";
-      position:absolute; inset:0; background: rgba(0,0,0,0.45);
-    }
+      @keyframes flyOut {
+        from {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        to {
+          opacity: 0;
+          transform: translateY(-50px);
+        }
+      }
+      @keyframes flyIn {
+        from {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
 
-    nav { position: absolute; top: 18px; left: 0; right: 0; z-index: 30; }
-    .nav-inner { max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:0 1rem; }
-    .nav-inner .logo img { height:44px; display:block; }
-    .nav-inner .nav-links { display:flex; gap:1rem; align-items:center; list-style:none; margin:0; padding:0; }
-    .nav-inner .nav-links a { color:#fff; font-weight:600; padding:.35rem .6rem; border-radius:6px; }
-    .nav-inner .nav-links a:hover { background: rgba(255,255,255,0.06); }
-
-    /* ---------- Hero content ---------- */
-    .header__container { z-index: 20; text-align:center; color:#fff; max-width:980px; }
-    .header__container h1 { font-size:3.2rem; margin:0; line-height:1; letter-spacing:1px; }
-    .header__container h1 span { display:block; }
-    .header__container p { color: rgba(255,255,255,0.92); max-width:700px; margin:1rem auto 1.6rem; font-size:1.05rem; }
-    .header__btn .btn { background:var(--nd-green); border:0; color:#fff; font-weight:700; padding:.65rem 1.1rem; border-radius:8px; }
-    .header__btn .btn:hover { background:var(--nd-green-dark); transform:translateY(-3px); }
-
-    .socials { display:flex; gap:12px; justify-content:center; margin-top:18px; list-style:none; padding:0; }
-    .socials a { color:#fff; font-size:1.1rem; display:inline-flex; align-items:center; justify-content:center; width:38px; height:38px; border-radius:6px; background:rgba(255,255,255,0.06); }
-
-    /* ---------- Openings cards (Bootstrap-card style like Recursos) ---------- */
-    #openings-cards { display:none; padding: 3.5rem 1rem; background: #fafafa; }
-    .openings-inner { max-width:1200px; margin: 0 auto; }
-    .sc-list-card { border-radius:12px; overflow:hidden; transition: transform .28s ease, box-shadow .28s ease; box-shadow: 0 6px 18px rgba(0,0,0,0.06); background:#fff; }
-    .sc-list-card:hover { transform: translateY(-8px); box-shadow: 0 14px 42px rgba(0,0,0,0.12); }
-
-    .sc-list-card .card-img img { width:100%; height:220px; object-fit:cover; display:block; }
-    .sc-list-card .card-body { padding:22px; }
-    .card-date { color:var(--muted); font-size:.9rem; margin-bottom:.6rem; display:flex; align-items:center; gap:.5rem; }
-    .card-title { font-size:1.25rem; margin:0 0 .6rem; font-weight:600; color: #111; }
-    .p-text { color: #444; margin-bottom: .9rem; }
-    .card-author { display:flex; align-items:center; gap:.8rem; margin-top:8px; }
-    .card-author-img img { width:44px; height:44px; object-fit:cover; border-radius:50%; }
-    .card-author-name { color:var(--muted); font-size:.92rem; }
-
-    /* Buttons inside cards */
-    .card .btn-cta { border-radius:8px; padding:.45rem .9rem; font-weight:700; }
-
-    /* ---------- Animation classes ---------- */
-    .hidden{display:none!important;}
-    .no-pointer { pointer-events:none; }
-
-    /* hero fly out animations (applied to each element) */
-    .fly-out-up { animation: flyOutUp .55s cubic-bezier(.2,.9,.3,1) forwards; }
-    .fly-out-left { animation: flyOutLeft .55s cubic-bezier(.2,.9,.3,1) forwards; }
-    .fly-out-right { animation: flyOutRight .55s cubic-bezier(.2,.9,.3,1) forwards; }
-    @keyframes flyOutUp {
-      from { opacity:1; transform: translateY(0); }
-      to   { opacity:0; transform: translateY(-40px) scale(.98); }
-    }
-    @keyframes flyOutLeft {
-      from { opacity:1; transform: translateX(0); }
-      to   { opacity:0; transform: translateX(-60px) scale(.98); }
-    }
-    @keyframes flyOutRight {
-      from { opacity:1; transform: translateX(0); }
-      to   { opacity:0; transform: translateX(60px) scale(.98); }
-    }
-
-    /* cards fly in */
-    .cards-visible { display:block; }
-    .card-in-left { animation: cardInLeft .6s cubic-bezier(.2,.9,.3,1) forwards; }
-    .card-in-right { animation: cardInRight .6s cubic-bezier(.2,.9,.3,1) forwards; }
-    @keyframes cardInLeft {
-      from { opacity:0; transform: translateX(-40px) scale(.98); }
-      to   { opacity:1; transform: translateX(0) scale(1); }
-    }
-    @keyframes cardInRight {
-      from { opacity:0; transform: translateX(40px) scale(.98); }
-      to   { opacity:1; transform: translateX(0) scale(1); }
-    }
-
-    /* responsive tweaks */
-    @media (max-width: 768px) {
-      .header__container h1{ font-size:2.1rem; }
-      .sc-list-card .card-img img { height:160px; }
-    }
-  </style>
-</head>
-<body>
-  <!-- HEADER / HERO -->
-  <header class="main" role="banner">
-    <nav aria-label="Main navigation">
-      <div class="nav-inner">
-        <div class="logo">
-          <a href="index.html"><img src="assets/logo.png" alt="ND Western Logo"></a>
+      /* Cards layout */
+      .openings__grid {
+        display: none;
+        margin-top: 50px;
+        gap: 30px;
+        justify-content: center;
+      }
+      .openings__card {
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+        overflow: hidden;
+        text-decoration: none;
+        color: inherit;
+        width: 300px;
+        transition: all 0.4s ease;
+      }
+      .openings__card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 24px rgba(0,0,0,0.2);
+      }
+      .openings__card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+      .openings__card h3 {
+        font-size: 1.5rem;
+        margin-top: 15px;
+      }
+      .openings__card p {
+        font-size: 0.95rem;
+        color: #555;
+        padding-bottom: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header class="main">
+      <nav>
+        <div class="nav__header">
+          <div class="nav__logo">
+            <a href="index.html">
+              <img src="assets/logo.png" alt="ND Western Logo" />
+            </a>
+          </div>
+          <div class="nav__menu__btn" id="menu-btn">
+            <i class="ri-menu-3-line"></i>
+          </div>
         </div>
-        <ul class="nav-links" id="nav-links">
+        <ul class="nav__links" id="nav-links">
           <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About Us</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
-      </div>
-    </nav>
+      </nav>
 
-    <div class="header__container" id="hero-content" aria-live="polite">
-      <h1 id="hero-title"><span>ND</span><span>Western Careers</span></h1>
-
-      <p id="hero-sub">
-        Explore exciting opportunities with ND Western. Join a professional and trusted team driving innovation, growth, and success across the energy industry.
-      </p>
-
-      <div class="header__btn">
-        <button id="view-openings" class="btn" aria-controls="openings-cards" aria-expanded="false" >
-          View Openings <i class="ri-arrow-right-long-line"></i>
-        </button>
-      </div>
-
-      <ul class="socials" id="hero-socials" aria-hidden="false">
-        <li><a href="#" aria-label="facebook"><i class="ri-facebook-fill"></i></a></li>
-        <li><a href="#" aria-label="twitter"><i class="ri-twitter-fill"></i></a></li>
-        <li><a href="#" aria-label="linkedin"><i class="ri-linkedin-fill"></i></a></li>
-        <li><a href="#" aria-label="instagram"><i class="ri-instagram-line"></i></a></li>
-      </ul>
-    </div>
-  </header>
-
-  <!-- OPENINGS CARDS (hidden until view-openings clicked) -->
-  <section id="openings-cards">
-    <div class="openings-inner">
-      <div class="text-center mb-4">
-        <h2 class="mb-1">Choose Your Path</h2>
-        <p class="mb-0" style="color:var(--muted)">Click to view internal or referral opportunities</p>
-      </div>
-
-      <div class="row gx-4 gy-4 justify-content-center align-items-stretch">
-        <!-- Internal card (left) -->
-        <div class="col-12 col-md-6">
-          <a href="jobs.html" class="sc-list-card card h-100" id="card-left" role="link">
-            <div class="card-img">
-              <img src="assets/images/header-banner1.jpg" alt="Internal Openings">
-            </div>
-            <div class="card-body">
-              <div class="card-date">
-                <span class="icon-sm"><i class="fas fa-clock"></i></span>
-                <span>Published: Sep 16, 2025</span>
-              </div>
-              <h5 class="card-title">Internal Openings</h5>
-              <p class="p-text">View current internal career opportunities and apply via the internal portal.</p>
-
-              <div class="card-author d-flex align-items-center">
-                <div class="card-author-img">
-                  <img src="assets/images/blog/author-1.jpg" alt="Author">
-                </div>
-                <div class="card-author-name">by <strong>HR Team</strong></div>
-                <div style="margin-left:auto">
-                  <button class="btn btn-sm btn-outline-success btn-cta">View</button>
-                </div>
-              </div>
-            </div>
-          </a>
+      <!-- HERO / LANDING HEADER -->
+      <div class="header__container" id="hero-content">
+        <h1>
+          <span>ND</span>
+          <span>Western Careers</span>
+        </h1>
+        <p>
+          Explore exciting opportunities with ND Western. Join a professional and
+          trusted team driving innovation, growth, and success across the energy
+          industry.
+        </p>
+        <div class="header__btn">
+          <button class="btn" id="view-openings">
+            View Openings
+            <i class="ri-arrow-right-long-line"></i>
+          </button>
         </div>
-
-        <!-- Referral card (right) -->
-        <div class="col-12 col-md-6">
-          <a href="internships.html" class="sc-list-card card h-100" id="card-right" role="link">
-            <div class="card-img">
-              <img src="assets/images/header-banner.jpg" alt="Referral & Graduate Program">
-            </div>
-            <div class="card-body">
-              <div class="card-date">
-                <span class="icon-sm"><i class="fas fa-clock"></i></span>
-                <span>Published: Sep 16, 2025</span>
-              </div>
-              <h5 class="card-title">Referrals & Graduate Program</h5>
-              <p class="p-text">Explore internships, graduate trainee opportunities and referral openings.</p>
-
-              <div class="card-author d-flex align-items-center">
-                <div class="card-author-img">
-                  <img src="assets/images/blog/author-2.jpg" alt="Author">
-                </div>
-                <div class="card-author-name">by <strong>Talent Acquisition</strong></div>
-                <div style="margin-left:auto">
-                  <button class="btn btn-sm btn-outline-primary btn-cta">View</button>
-                </div>
-              </div>
-            </div>
-          </a>
-        </div>
+        <ul class="socials">
+          <li><a href="#"><i class="ri-facebook-fill"></i></a></li>
+          <li><a href="#"><i class="ri-twitter-fill"></i></a></li>
+          <li><a href="#"><i class="ri-linkedin-fill"></i></a></li>
+          <li><a href="#"><i class="ri-instagram-line"></i></a></li>
+        </ul>
       </div>
-    </div>
-  </section>
 
-  <!-- Bootstrap JS (only for responsive navbar if needed) -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+      <!-- OPENINGS CARDS (hidden by default) -->
+      <div class="openings__grid container" id="openings-cards">
+        <!-- Internal -->
+        <a href="jobs.html" class="openings__card">
+          <img src="assets/images/header-banner1.jpg" alt="Internal Openings" />
+          <div class="p-4 text-center">
+            <h3>Internal Openings</h3>
+            <p>View all current internal career opportunities at ND Western.</p>
+          </div>
+        </a>
+        <!-- Referrals -->
+        <a href="internships.html" class="openings__card">
+          <img src="assets/images/header-banner.jpg" alt="Graduate Program" />
+          <div class="p-4 text-center">
+            <h3>Referrals & Graduate Program</h3>
+            <p>Explore internships and referral opportunities to grow with us.</p>
+          </div>
+        </a>
+      </div>
+    </header>
 
-  <script>
-    // Elements
-    const viewBtn = document.getElementById('view-openings');
-    const heroTitle = document.getElementById('hero-title');
-    const heroSub = document.getElementById('hero-sub');
-    const heroSocials = document.getElementById('hero-socials');
-    const heroContainer = document.getElementById('hero-content');
-    const openingsSection = document.getElementById('openings-cards');
-    const cardLeft = document.getElementById('card-left');
-    const cardRight = document.getElementById('card-right');
+    <!-- Scripts -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script>
+      // Handle hero -> openings transition
+      const viewBtn = document.getElementById("view-openings");
+      const heroContent = document.getElementById("hero-content");
+      const openingsCards = document.getElementById("openings-cards");
 
-    // initial state
-    openingsSection.style.display = 'none';
-
-    function animateHeroOutThenShowCards() {
-      // disable the button to avoid double clicks
-      viewBtn.disabled = true;
-      viewBtn.setAttribute('aria-disabled','true');
-
-      // staggered fly out
-      heroTitle.classList.add('fly-out-left');
-      setTimeout(() => heroSub.classList.add('fly-out-right'), 80);
-      setTimeout(() => viewBtn.classList.add('fly-out-up'), 160);
-      setTimeout(() => heroSocials.classList.add('fly-out-up'), 240);
-
-      // after animation completes, hide hero and show cards
-      setTimeout(() => {
-        heroContainer.style.display = 'none';
-        // show openings and animate cards in
-        openingsSection.style.display = 'block';
-        // small delay so display takes effect then animate
+      viewBtn.addEventListener("click", () => {
+        // Fly out hero content
+        heroContent.classList.add("fly-out");
         setTimeout(() => {
-          cardLeft.classList.add('card-in-left');
-          setTimeout(() => cardRight.classList.add('card-in-right'), 120); // stagger
-          // ensure focus for accessibility
-          cardLeft.focus && cardLeft.focus();
-        }, 60);
-      }, 700);
-    }
-
-    viewBtn.addEventListener('click', animateHeroOutThenShowCards);
-
-    // Optional: allow pressing Enter on the button (native) - already works.
-  </script>
-</body>
+          heroContent.style.display = "none";
+          // Show cards
+          openingsCards.style.display = "flex";
+          openingsCards.classList.add("fly-in");
+        }, 1000); // Wait for fly-out to finish
+      });
+    </script>
+  </body>
 </html>
