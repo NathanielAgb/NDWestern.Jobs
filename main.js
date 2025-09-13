@@ -1,3 +1,4 @@
+// ===== MENU TOGGLE =====
 const menuBtn = document.getElementById("menu-btn");
 const navLinks = document.getElementById("nav-links");
 const menuBtnIcon = menuBtn.querySelector("i");
@@ -14,29 +15,41 @@ menuBtn.addEventListener("click", () => {
 
 navLinks.addEventListener("click", () => {
   navLinks.classList.remove("open");
-  menuBtnIcon.setAttribute("class", "ri-menu-line");
+  menuBtnIcon.setAttribute("class", "ri-menu-3-line");
 });
 
+// ===== SCROLL REVEAL OPTIONS =====
 const scrollRevealOption = {
-  distance: "50px",
+  distance: "60px",   // smoother, longer fly-in
   origin: "bottom",
-  duration: 2000,
+  duration: 1500,     // slightly faster
+  opacity: 0,         // fade-in effect
+  easing: "ease-in-out", 
 };
 
+// ===== HEADER ANIMATIONS =====
+// Title flies in first
 ScrollReveal().reveal(".header__container h1", {
   ...scrollRevealOption,
-  delay: 1000,
+  delay: 500,
 });
+
+// Subtitle appears smoothly after title
 ScrollReveal().reveal(".header__container p", {
   ...scrollRevealOption,
-  delay: 2000,
+  delay: 1200,
 });
+
+// Buttons come last with a pop-in effect
 ScrollReveal().reveal(".header__container .header__btn", {
   ...scrollRevealOption,
-  delay: 3000,
+  delay: 2000,
+  scale: 0.8,   // slight zoom-in
 });
+
+// Social icons reveal one by one
 ScrollReveal().reveal(".socials li", {
   ...scrollRevealOption,
-  delay: 4000,
-  interval: 500,
+  delay: 2500,
+  interval: 300,
 });
