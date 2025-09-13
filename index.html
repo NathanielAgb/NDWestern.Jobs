@@ -1,177 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ND Western | Careers</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ND Western | Careers</title>
 
-    <!-- Remixicon -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css"
-      rel="stylesheet"
-    />
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="styles.css" />
+  <!-- Remixicon -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet"/>
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="assets/images/favicon.png" />
-    <style>
-      /* Smooth transitions */
-      .hidden {
-        display: none;
-      }
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css" />
 
-      .fly-out {
-        animation: flyOut 1s forwards;
-      }
-      .fly-in {
-        animation: flyIn 1s forwards;
-      }
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="assets/images/favicon.png" />
 
-      @keyframes flyOut {
-        from {
-          opacity: 1;
-          transform: translateY(0);
-        }
-        to {
-          opacity: 0;
-          transform: translateY(-50px);
-        }
-      }
-      @keyframes flyIn {
-        from {
-          opacity: 0;
-          transform: translateY(50px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
+  <style>
+    /* Hide job cards initially */
+    .job-cards {
+      display: none;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.6s ease;
+    }
+    .job-cards.show {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .job-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .job-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="main">
+    <nav>
+      <div class="nav__header">
+        <div class="nav__logo">
+          <a href="index.html">
+            <img src="assets/logo.png" alt="ND Western Logo" />
+          </a>
+        </div>
+        <div class="nav__menu__btn" id="menu-btn">
+          <i class="ri-menu-3-line"></i>
+        </div>
+      </div>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
 
-      /* Cards layout */
-      .openings__grid {
-        display: none;
-        margin-top: 50px;
-        gap: 30px;
-        justify-content: center;
-      }
-      .openings__card {
-        background: #fff;
-        border-radius: 12px;
-        box-shadow: 0 6px 18px rgba(0,0,0,0.15);
-        overflow: hidden;
-        text-decoration: none;
-        color: inherit;
-        width: 300px;
-        transition: all 0.4s ease;
-      }
-      .openings__card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 10px 24px rgba(0,0,0,0.2);
-      }
-      .openings__card img {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
-      }
-      .openings__card h3 {
-        font-size: 1.5rem;
-        margin-top: 15px;
-      }
-      .openings__card p {
-        font-size: 0.95rem;
-        color: #555;
-        padding-bottom: 15px;
-      }
-    </style>
-  </head>
-  <body>
-    <!-- HEADER -->
-    <header class="main">
-      <nav>
-        <div class="nav__header">
-          <div class="nav__logo">
-            <a href="index.html">
-              <img src="assets/logo.png" alt="ND Western Logo" />
-            </a>
-          </div>
-          <div class="nav__menu__btn" id="menu-btn">
-            <i class="ri-menu-3-line"></i>
+    <!-- HERO / LANDING HEADER -->
+    <div class="header__container text-center">
+      <h1>
+        <span>ND</span>
+        <span>Western Careers</span>
+      </h1>
+      <p>
+        Explore exciting opportunities with ND Western. Join a professional and
+        trusted team driving innovation, growth, and success across the energy
+        industry.
+      </p>
+      <div class="header__btn">
+        <button class="btn btn-primary" id="viewOpenings">
+          View Openings
+          <i class="ri-arrow-right-long-line"></i>
+        </button>
+      </div>
+      <ul class="socials list-inline mt-3">
+        <li class="list-inline-item"><a href="#"><i class="ri-facebook-fill"></i></a></li>
+        <li class="list-inline-item"><a href="#"><i class="ri-twitter-fill"></i></a></li>
+        <li class="list-inline-item"><a href="#"><i class="ri-linkedin-fill"></i></a></li>
+        <li class="list-inline-item"><a href="#"><i class="ri-instagram-line"></i></a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- JOB CARDS SECTION -->
+  <section class="job-cards container my-5" id="jobCards">
+    <div class="row justify-content-center">
+      <!-- Internal Careers Card -->
+      <div class="col-md-6 col-lg-5 mb-4">
+        <div class="card job-card h-100">
+          <img src="assets/images/internal.jpg" class="card-img-top" alt="Internal Careers">
+          <div class="card-body text-center">
+            <h5 class="card-title">Internal Careers</h5>
+            <p class="card-text">For existing ND Western employees – explore internal job postings and growth opportunities.</p>
+            <a href="internal.html" class="btn btn-outline-primary">Explore Internal</a>
           </div>
         </div>
-        <ul class="nav__links" id="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
+      </div>
 
-      <!-- HERO / LANDING HEADER -->
-      <div class="header__container" id="hero-content">
-        <h1>
-          <span>ND</span>
-          <span>Western Careers</span>
-        </h1>
-        <p>
-          Explore exciting opportunities with ND Western. Join a professional and
-          trusted team driving innovation, growth, and success across the energy
-          industry.
-        </p>
-        <div class="header__btn">
-          <button class="btn" id="view-openings">
-            View Openings
-            <i class="ri-arrow-right-long-line"></i>
-          </button>
+      <!-- Referral Careers Card -->
+      <div class="col-md-6 col-lg-5 mb-4">
+        <div class="card job-card h-100">
+          <img src="assets/images/referral.jpg" class="card-img-top" alt="Referral Careers">
+          <div class="card-body text-center">
+            <h5 class="card-title">Referral Careers</h5>
+            <p class="card-text">For external candidates – browse open job opportunities and start your application journey.</p>
+            <a href="external.html" class="btn btn-outline-success">Explore External</a>
+          </div>
         </div>
-        <ul class="socials">
-          <li><a href="#"><i class="ri-facebook-fill"></i></a></li>
-          <li><a href="#"><i class="ri-twitter-fill"></i></a></li>
-          <li><a href="#"><i class="ri-linkedin-fill"></i></a></li>
-          <li><a href="#"><i class="ri-instagram-line"></i></a></li>
-        </ul>
       </div>
+    </div>
+  </section>
 
-      <!-- OPENINGS CARDS (hidden by default) -->
-      <div class="openings__grid container" id="openings-cards">
-        <!-- Internal -->
-        <a href="jobs.html" class="openings__card">
-          <img src="assets/images/header-banner-1.jpg" alt="Internal Openings" />
-          <div class="p-4 text-center">
-            <h3>Internal Openings</h3>
-            <p>View all current internal career opportunities at ND Western.</p>
-          </div>
-        </a>
-        <!-- Referrals -->
-        <a href="internships.html" class="openings__card">
-          <img src="assets/images/header-banner.jpg" alt="Graduate Program" />
-          <div class="p-4 text-center">
-            <h3>Referrals & Graduate Program</h3>
-            <p>Explore internships and referral opportunities to grow with us.</p>
-          </div>
-        </a>
-      </div>
-    </header>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Scripts -->
-    <script src="https://unpkg.com/scrollreveal"></script>
-    <script>
-      // Handle hero -> openings transition
-      const viewBtn = document.getElementById("view-openings");
-      const heroContent = document.getElementById("hero-content");
-      const openingsCards = document.getElementById("openings-cards");
+  <!-- ScrollReveal -->
+  <script src="https://unpkg.com/scrollreveal"></script>
 
-      viewBtn.addEventListener("click", () => {
-        // Fly out hero content
-        heroContent.classList.add("fly-out");
-        setTimeout(() => {
-          heroContent.style.display = "none";
-          // Show cards
-          openingsCards.style.display = "flex";
-          openingsCards.classList.add("fly-in");
-        }, 1000); // Wait for fly-out to finish
-      });
-    </script>
-  </body>
+  <!-- Main JS -->
+  <script>
+    // View Openings Button Logic
+    const viewBtn = document.getElementById("viewOpenings");
+    const jobCards = document.getElementById("jobCards");
+    const headerContent = document.querySelector(".header__container");
+
+    viewBtn.addEventListener("click", () => {
+      headerContent.style.display = "none"; // Hide hero text
+      jobCards.classList.add("show");       // Show cards
+    });
+
+    // Animate cards when they appear
+    ScrollReveal().reveal(".job-card", {
+      distance: "50px",
+      origin: "bottom",
+      duration: 1000,
+      interval: 200
+    });
+  </script>
+</body>
 </html>
