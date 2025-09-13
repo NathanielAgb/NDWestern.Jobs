@@ -33,8 +33,6 @@
         </div>
         <ul class="nav__links" id="nav-links">
           <li><a href="index.html">Home</a></li>
-          <li><a href="jobs.html">Jobs</a></li>
-          <li><a href="blogs.html">Blogs</a></li>
           <li><a href="about.html">About Us</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
@@ -52,7 +50,7 @@
           industry.
         </p>
         <div class="header__btn">
-          <a href="jobs.html">
+          <a href="openings.html" class="slide-link">
             <button class="btn">
               View Openings
               <i class="ri-arrow-right-long-line"></i>
@@ -70,64 +68,6 @@
 
     <!-- ScrollReveal + Main JS -->
     <script src="https://unpkg.com/scrollreveal"></script>
-    <script>
-      // MENU TOGGLE
-      const menuBtn = document.getElementById("menu-btn");
-      const navLinks = document.getElementById("nav-links");
-      const menuBtnIcon = menuBtn.querySelector("i");
-
-      menuBtn.addEventListener("click", () => {
-        navLinks.classList.toggle("open");
-
-        const isOpen = navLinks.classList.contains("open");
-        menuBtnIcon.setAttribute(
-          "class",
-          isOpen ? "ri-close-line" : "ri-menu-3-line"
-        );
-      });
-
-      navLinks.addEventListener("click", () => {
-        navLinks.classList.remove("open");
-        menuBtnIcon.setAttribute("class", "ri-menu-3-line");
-      });
-
-      // SCROLLREVEAL ANIMATIONS
-      const baseOption = {
-        distance: "80px",
-        duration: 1500,
-        opacity: 0,
-        easing: "ease-in-out",
-      };
-
-      // Title from left
-      ScrollReveal().reveal(".header__container h1", {
-        ...baseOption,
-        origin: "left",
-        delay: 500,
-      });
-
-      // Subtitle from right
-      ScrollReveal().reveal(".header__container p", {
-        ...baseOption,
-        origin: "right",
-        delay: 1200,
-      });
-
-      // Button fade-up zoom
-      ScrollReveal().reveal(".header__container .header__btn", {
-        ...baseOption,
-        origin: "bottom",
-        delay: 2000,
-        scale: 0.85,
-      });
-
-      // Social icons staggered
-      ScrollReveal().reveal(".socials li", {
-        ...baseOption,
-        origin: "bottom",
-        delay: 2500,
-        interval: 300,
-      });
-    </script>
+    <script src="main.js"></script>
   </body>
 </html>
