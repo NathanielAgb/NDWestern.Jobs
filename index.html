@@ -65,12 +65,13 @@
         overflow: hidden;
         text-decoration: none;
         color: inherit;
-        width: 320px; /* slightly wider */
+        width: 340px; /* slightly wider */
         transition: all 0.4s ease;
         display: flex;
         flex-direction: column;
         align-items: center;
-        text-align: center;
+        text-align: left; /* align left for bullets */
+        padding-bottom: 20px;
       }
       .openings__card:hover {
         transform: translateY(-10px);
@@ -83,13 +84,25 @@
       }
       .openings__card h3 {
         font-size: 1.4rem;
-        margin-top: 15px;
+        margin: 15px 0 10px;
+        font-weight: bold;
+        text-align: center;
       }
       .openings__card p {
         font-size: 0.95rem;
-        color: #555;
-        padding: 0 15px 15px 15px;
-        list-style-type: disc; /* optional bullet if needed */
+        color: #333;
+        margin: 0 15px 10px;
+        text-align: center;
+      }
+      .openings__card ul {
+        margin: 0 25px;
+        padding-left: 18px;
+        list-style-type: disc;
+      }
+      .openings__card li {
+        margin-bottom: 8px;
+        color: #000; /* black bullets */
+        font-size: 0.95rem;
       }
     </style>
   </head>
@@ -146,8 +159,11 @@
           <img src="assets/images/header-banner-1.jpg" alt="Internal Openings" />
           <div class="p-4">
             <h3>Internal Openings</h3>
+            <p>Grow your career within ND Western.</p>
             <ul>
-              <li>View all current internal career opportunities at ND Western</li>
+              <li>View all current internal career opportunities</li>
+              <li>Opportunities for staff mobility and promotions</li>
+              <li>Exclusive postings available to employees only</li>
             </ul>
           </div>
         </a>
@@ -156,8 +172,11 @@
           <img src="assets/images/header-banner.jpg" alt="Graduate Program" />
           <div class="p-4">
             <h3>Referrals & Graduate Program</h3>
+            <p>Kickstart your journey with ND Western.</p>
             <ul>
-              <li>Explore internships and referral opportunities to grow with us</li>
+              <li>Explore internship opportunities</li>
+              <li>Join our graduate trainee programs</li>
+              <li>Refer talent and grow with us</li>
             </ul>
           </div>
         </a>
@@ -179,14 +198,14 @@
 
       // Handle hero -> openings transition
       viewBtn.addEventListener("click", () => {
-        heroContent.classList.remove("fly-in"); 
+        heroContent.classList.remove("fly-in");
         heroContent.classList.add("fly-out");
 
         setTimeout(() => {
           heroContent.style.display = "none";
           openingsCards.style.display = "flex";
           openingsCards.classList.add("fly-in");
-        }, 1000); 
+        }, 1000);
       });
     </script>
   </body>
