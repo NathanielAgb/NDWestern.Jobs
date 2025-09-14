@@ -26,35 +26,47 @@
     <link rel="icon" type="image/x-icon" href="assets/images/favicon.png" />
 
     <style>
-      /* Make header full height for floating effect */
+      /* HERO background container */
       .header__container {
-        position: relative;
+        background: url("assets/images/header.jpg") center/cover no-repeat;
+        height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100vh; /* full screen */
         padding: 20px;
       }
 
-      /* Floating table */
+      /* Floating jobs table */
       .jobs-table-container {
-        background: rgba(255, 255, 255, 0.95);
-        padding: 15px;
-        border-radius: 12px;
-        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
         width: 100%;
-        max-width: 1000px;
+        max-width: 900px;
       }
 
-      /* Make table text smaller on mobile */
+      .jobs-table-container table {
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+        overflow: hidden;
+        background: #fff;
+      }
+
+      /* Make table responsive */
       @media (max-width: 768px) {
         .jobs-table-container {
-          padding: 10px;
+          max-width: 100%;
         }
-        .jobs-table-container table th,
-        .jobs-table-container table td {
-          font-size: 0.8rem;
-          white-space: nowrap; /* Prevent breaking */
+
+        .jobs-table-container table {
+          font-size: 14px;
+        }
+
+        .jobs-table-container td,
+        .jobs-table-container th {
+          padding: 8px;
+        }
+
+        .jobs-table-container .btn {
+          font-size: 12px;
+          padding: 4px 8px;
         }
       }
     </style>
@@ -80,55 +92,49 @@
         </ul>
       </nav>
 
-      <!-- HERO with table floating on it -->
-      <div class="header__container" id="hero-content">
+      <!-- HERO (with floating jobs table) -->
+      <div class="header__container">
         <div class="jobs-table-container">
-          <div class="table-responsive">
-            <table class="table table-striped text-center">
-              <thead class="table-dark">
-                <tr>
-                  <th>SN</th>
-                  <th>Job Title</th>
-                  <th>Quantity</th>
-                  <th>Country</th>
-                  <th>Company</th>
-                  <th>Details</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>General Operator</td>
-                  <td>10</td>
-                  <td>Malaysia</td>
-                  <td>ADVANCED ASSEMBLY MATERIALS (M) SDN BHD</td>
-                  <td>
-                    <a href="jobs_single.html" class="btn btn-secondary btn-sm">Details</a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Field Engineer</td>
-                  <td>5</td>
-                  <td>Nigeria</td>
-                  <td>ND Western Limited</td>
-                  <td>
-                    <a href="#" class="btn btn-secondary btn-sm">Details</a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>Data Analyst</td>
-                  <td>2</td>
-                  <td>Nigeria</td>
-                  <td>ND Western Limited</td>
-                  <td>
-                    <a href="#" class="btn btn-secondary btn-sm">Details</a>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          <table class="table table-striped text-center">
+            <thead class="table-dark">
+              <tr>
+                <th>SN</th>
+                <th>Job Title</th>
+                <th>Location</th>
+                <th>Date Posted</th>
+                <th>View</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>General Operator</td>
+                <td>Malaysia</td>
+                <td>01 Sept 2025</td>
+                <td>
+                  <a href="jobs_single.html" class="btn btn-secondary btn-sm">View Details</a>
+                </td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Field Engineer</td>
+                <td>Nigeria</td>
+                <td>05 Sept 2025</td>
+                <td>
+                  <a href="#" class="btn btn-secondary btn-sm">View Details</a>
+                </td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Data Analyst</td>
+                <td>Nigeria</td>
+                <td>10 Sept 2025</td>
+                <td>
+                  <a href="#" class="btn btn-secondary btn-sm">View Details</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </header>
