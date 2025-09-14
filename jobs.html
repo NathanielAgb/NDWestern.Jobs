@@ -1,163 +1,67 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ND Western | Careers</title>
-
-    <!-- Remixicon -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css"
-      rel="stylesheet"
-    />
-
-    <!-- Styles -->
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
-
-      :root {
-        --primary-color: #ed1d24;
-        --primary-color-dark: #b80314;
-        --white: #ffffff;
-        --black: #0f0f0f;
-        --grey: #f5f5f5;
-        --max-width: 1200px;
-      }
-
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Roboto", sans-serif;
-      }
-
-      body {
-        background: var(--white);
-        color: var(--black);
-      }
-
-      /* Hero Section */
-      .hero {
-        position: relative;
-        min-height: 100vh;
-        background: url("assets/img/career-hero.jpg") center/cover no-repeat;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-      }
-
-      .hero::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.65);
-      }
-
-      .hero-content {
-        position: relative;
-        z-index: 2;
-        max-width: var(--max-width);
-        width: 100%;
-        padding: 2rem;
-        color: var(--white);
-      }
-
-      .hero h1 {
-        font-size: 3rem;
-        font-weight: 700;
-        margin-bottom: 0.5rem;
-      }
-
-      .hero p {
-        font-size: 1.2rem;
-        font-weight: 400;
-        margin-bottom: 2rem;
-      }
-
-      /* Jobs table INSIDE hero */
-      .jobs-table {
-        width: 100%;
-        border-collapse: collapse;
-        background: rgba(255, 255, 255, 0.95);
-        color: #333;
-        border-radius: 10px;
-        overflow: hidden;
-      }
-
-      .jobs-table thead {
-        background: var(--primary-color);
-        color: #fff;
-      }
-
-      .jobs-table th,
-      .jobs-table td {
-        padding: 1rem;
-        text-align: left;
-        font-size: 1rem;
-      }
-
-      .jobs-table tr:nth-child(even) {
-        background: #f9f9f9;
-      }
-
-      .view-btn {
-        background: var(--primary-color);
-        color: #fff;
-        border: none;
-        padding: 0.5rem 1rem;
-        border-radius: 6px;
-        cursor: pointer;
-        transition: background 0.3s ease;
-      }
-
-      .view-btn:hover {
-        background: var(--primary-color-dark);
-      }
-    </style>
-  </head>
-  <body>
-    <!-- Landing Page (Hero with Background + Jobs Table) -->
-    <section class="hero">
-      <div class="hero-content">
-        <h1>Join Our Team</h1>
-        <p>Be part of ND Western’s success story</p>
-
-        <!-- Recent Jobs Table -->
-        <table class="jobs-table">
-          <thead>
-            <tr>
-              <th>Job Title</th>
-              <th>Location</th>
-              <th>Posted Date</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Business Analyst</td>
-              <td>Lagos</td>
-              <td>Sept 10, 2025</td>
-              <td><button class="view-btn">View Details</button></td>
-            </tr>
-            <tr>
-              <td>Finance Officer</td>
-              <td>Warri</td>
-              <td>Sept 8, 2025</td>
-              <td><button class="view-btn">View Details</button></td>
-            </tr>
-            <tr>
-              <td>HR Intern</td>
-              <td>Remote</td>
-              <td>Sept 5, 2025</td>
-              <td><button class="view-btn">View Details</button></td>
-            </tr>
-          </tbody>
-        </table>
+<!-- HEADER -->
+<header class="main">
+  <nav>
+    <div class="nav__header">
+      <div class="nav__logo">
+        <a href="index.html">
+          <img src="assets/logo.png" alt="ND Western Logo" />
+        </a>
       </div>
-    </section>
-  </body>
-</html>
+      <div class="nav__menu__btn" id="menu-btn">
+        <i class="ri-menu-3-line"></i>
+      </div>
+    </div>
+    <ul class="nav__links" id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO / LANDING HEADER -->
+  <div class="header__container" id="hero-content">
+    <h1>Join Our Team</h1>
+    <h2>Explore Careers at ND Western</h2>
+  </div>
+</header>
+
+<!-- RECENT JOBS TABLE -->
+<section class="recent__jobs">
+  <div class="section__container">
+    <h2>Recent Jobs</h2>
+    <table class="jobs__table">
+      <thead>
+        <tr>
+          <th>Position</th>
+          <th>Department</th>
+          <th>Location</th>
+          <th>Date Posted</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Finance Analyst</td>
+          <td>Finance</td>
+          <td>Lagos</td>
+          <td>Sep 10, 2025</td>
+          <td><a href="#">View Details</a></td>
+        </tr>
+        <tr>
+          <td>HR Business Partner</td>
+          <td>Human Resources</td>
+          <td>Warri</td>
+          <td>Sep 05, 2025</td>
+          <td><a href="#">View Details</a></td>
+        </tr>
+        <tr>
+          <td>Graduate Trainee</td>
+          <td>Operations</td>
+          <td>Port Harcourt</td>
+          <td>Aug 28, 2025</td>
+          <td><a href="#">View Details</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
