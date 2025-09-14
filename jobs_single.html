@@ -3,13 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Job Details | ND Western Careers</title>
-
-    <!-- Bootstrap -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
+    <title>ND Western | Careers</title>
 
     <!-- Remixicon -->
     <link
@@ -17,62 +11,38 @@
       rel="stylesheet"
     />
 
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.png" />
     <style>
-      body {
-        font-family: Arial, sans-serif;
-        background: #f7f7f7;
+      /* Smooth transitions */
+      .hidden {
+        display: none;
       }
 
-      /* Navbar */
-      nav {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        padding: 12px 24px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background: rgba(0, 0, 0, 0.55);
-        z-index: 1000;
+      .fly-out {
+        animation: flyOut 1s forwards;
       }
-      nav .nav__logo img {
-        height: 40px;
-      }
-      nav .nav__links {
-        display: flex;
-        gap: 20px;
-        list-style: none;
-        margin: 0;
-      }
-      nav .nav__links a {
-        color: #fff;
-        text-decoration: none;
-        font-weight: 500;
+      .fly-in {
+        animation: flyIn 1s forwards;
       }
 
-      /* Hero background */
-      .hero {
-        background: url("assets/images/header.jpg") center/cover no-repeat;
-        min-height: 45vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        position: relative;
+      @keyframes flyOut {
+        from {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        to {
+          opacity: 0;
+          transform: translateY(-50px);
+        }
       }
-      .hero::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.55);
-      }
-
-      /* Fly-in animation */
       @keyframes flyIn {
         from {
           opacity: 0;
-          transform: translateY(60px);
+          transform: translateY(50px);
         }
         to {
           opacity: 1;
@@ -80,120 +50,105 @@
         }
       }
 
-      /* Job details card */
-      .job-details {
+      /* Cards layout */
+      .openings__grid {
+        display: none;
+        margin-top: 50px;
+        gap: 30px;
+        justify-content: center;
+      }
+      .openings__card {
         background: #fff;
-        padding: 40px 30px;
         border-radius: 12px;
         box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
-        max-width: 900px;
-        margin: -60px auto 40px;
-        position: relative;
-        z-index: 2;
-        opacity: 0;
-        animation: flyIn 1.2s ease forwards;
+        overflow: hidden;
+        text-decoration: none;
+        color: inherit;
+        width: 300px;
+        transition: all 0.4s ease;
       }
-      .job-details h2 {
-        margin-bottom: 15px;
-        font-weight: bold;
+      .openings__card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
       }
-      .job-meta {
-        margin-bottom: 20px;
-        color: #666;
+      .openings__card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
       }
-      .job-meta span {
-        display: inline-block;
-        margin-right: 20px;
+      .openings__card h3 {
+        font-size: 1.5rem;
+        margin-top: 15px;
       }
-
-      footer {
-        background: #111;
-        color: #fff;
-        text-align: center;
-        padding: 20px;
-      }
-
-      /* Responsive nav + layout */
-      @media (max-width: 576px) {
-        nav {
-          flex-direction: column;
-          gap: 10px;
-        }
-        .nav__links {
-          flex-direction: column;
-          align-items: center;
-        }
-        .job-details {
-          padding: 25px 20px;
-          margin: -40px 10px 30px;
-        }
+      .openings__card p {
+        font-size: 0.95rem;
+        color: #555;
+        padding-bottom: 15px;
       }
     </style>
   </head>
-
   <body>
-    <!-- Navbar -->
-    <nav>
-      <div class="nav__logo">
-        <a href="index.html"><img src="assets/logo.png" alt="ND Western Logo" /></a>
+    <!-- HEADER -->
+    <header class="main">
+      <nav>
+        <div class="nav__header">
+          <div class="nav__logo">
+            <a href="index.html">
+              <img src="assets/logo.png" alt="ND Western Logo" />
+            </a>
+          </div>
+          <div class="nav__menu__btn" id="menu-btn">
+            <i class="ri-menu-3-line"></i>
+          </div>
+        </div>
+        <ul class="nav__links" id="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- HERO / LANDING HEADER -->
+      <div class="header__container" id="hero-content">
+        <p>
+          Explore exciting opportunities with ND Western. Join a professional and
+          trusted team driving innovation, growth, and success across the energy
+          industry.
+        </p>
       </div>
-      <ul class="nav__links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="jobs.html">Jobs</a></li>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
 
-    <!-- Hero Background -->
-    <section class="hero"></section>
-
-    <!-- Job Details Card -->
-    <section class="job-details">
-      <h2>General Operator</h2>
-      <div class="job-meta">
-        <span><i class="ri-map-pin-line"></i> Location: Lagos</span>
-        <span><i class="ri-calendar-line"></i> Posted: Sept 1, 2025</span>
-        <span><i class="ri-briefcase-line"></i> Full-Time</span>
+      <!-- OPENINGS CARDS (hidden by default) -->
+      <div class="openings__grid container" id="openings-cards">
+        <!-- Internal -->
+        <a href="jobs.html" class="openings__card">
+          <img src="assets/images/header-banner1.jpg" alt="Internal Openings" />
+          <div class="p-4 text-center">
+            <h3>Internal Openings</h3>
+            <p>View all current internal career opportunities at ND Western.</p>
+          </div>
+        </a>
+        <!-- Referrals -->
+        <a href="internships.html" class="openings__card">
+          <img src="assets/images/header-banner.jpg" alt="Graduate Program" />
+          <div class="p-4 text-center">
+            <h3>Referrals & Graduate Program</h3>
+            <p>Explore internships and referral opportunities to grow with us.</p>
+          </div>
+        </a>
       </div>
+    </header>
 
-      <p>
-        We are seeking motivated and detail-oriented General Operators to join
-        our production team. The ideal candidate will support daily operations,
-        ensuring efficiency, quality, and safety standards are maintained.
-      </p>
+    <!-- Scripts -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script>
+      const heroContent = document.getElementById("hero-content");
+      const openingsCards = document.getElementById("openings-cards");
 
-      <h4>Your Role:</h4>
-      <ul>
-        <li>Operate production machinery and equipment.</li>
-        <li>Ensure product quality and consistency.</li>
-        <li>Maintain a safe and clean work environment.</li>
-        <li>Collaborate with supervisors and team members to meet targets.</li>
-      </ul>
-
-      <h4>Requirements:</h4>
-      <ul>
-        <li>Minimum 3 years of relevant experience.</li>
-        <li>Strong attention to detail and problem-solving skills.</li>
-        <li>Ability to work in shifts and adapt to a fast-paced environment.</li>
-        <li>Qualification: High School Diploma / Bachelor’s Degree preferred.</li>
-      </ul>
-
-      <h4>What We Offer:</h4>
-      <ul>
-        <li>Competitive compensation package.</li>
-        <li>Career growth opportunities.</li>
-        <li>Supportive and diverse work environment.</li>
-      </ul>
-
-      <div class="mt-4">
-        <a href="apply.html" class="btn btn-danger">Apply Now</a>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-      <p>&copy; 2025 ND Western. All rights reserved.</p>
-    </footer>
+      // Animate hero on page load
+      window.addEventListener("DOMContentLoaded", () => {
+        heroContent.style.display = "block";
+        heroContent.classList.add("fly-in");
+      });
+    </script>
   </body>
 </html>
