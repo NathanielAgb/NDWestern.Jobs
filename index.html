@@ -17,188 +17,46 @@
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/images/favicon.png" />
     <style>
-      :root {
-        --primary-color: #ed1d24;
-        --primary-color-dark: #b80314;
-        --white: #ffffff;
-        --max-width: 1200px;
+      /* Smooth transitions */
+      .hidden {
+        display: none;
       }
 
-      body {
-        font-family: "Roboto", sans-serif;
-        margin: 0;
+      .fly-out {
+        animation: flyOut 1s forwards;
+      }
+      .fly-in {
+        animation: flyIn 1s forwards;
       }
 
-      /* HERO BACKGROUND */
-      .main {
-        position: relative;
-        isolation: isolate;
-        min-height: 100vh;
-        background-image: url("assets/header.png");
-        background-position: center center;
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-color: #060604;
-      }
-
-      /* Overlay animation */
-      .main::before {
-        position: absolute;
-        content: "";
-        inset: 0;
-        opacity: 1;
-        background-color: #060604;
-        z-index: 999;
-        animation: main-slider 2s ease-in-out forwards;
-      }
-
-      @keyframes main-slider {
-        90% {
-          opacity: 0;
-          transform: translateX(0);
+      @keyframes flyOut {
+        from {
+          opacity: 1;
+          transform: translateY(0);
         }
-        100% {
+        to {
           opacity: 0;
-          transform: translateX(-100%);
+          transform: translateY(-50px);
+        }
+      }
+      @keyframes flyIn {
+        from {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
         }
       }
 
-      nav {
-        position: fixed;
-        isolation: isolate;
-        width: 100%;
-        z-index: 9;
-      }
-
-      .nav__header {
-        padding: 0.75rem 1rem;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        background-color: var(--primary-color);
-      }
-
-      .nav__logo a img {
-        max-width: 75px;
-      }
-
-      .nav__menu__btn {
-        font-size: 1.5rem;
-        color: var(--white);
-        cursor: pointer;
-      }
-
-      .nav__links {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        gap: 2rem;
-        padding: 2rem;
-        background-color: var(--primary-color);
-        transition: transform 0.5s;
-        z-index: -1;
-      }
-
-      .nav__links.open {
-        transform: translateY(100%);
-      }
-
-      .nav__links a {
-        color: var(--white);
-        white-space: nowrap;
-      }
-
-      /* HERO CONTENT */
-      .header__container {
-        max-width: var(--max-width);
-        margin: auto;
-        padding: 5rem 1rem;
-        text-align: center;
-        color: var(--white);
-      }
-
-      .header__container h1 {
-        margin-bottom: 2rem;
-        display: flex;
-        align-items: flex-end;
-        justify-content: center;
-        gap: 0 1rem;
-        flex-wrap: wrap;
-        font-weight: 800;
-      }
-
-      .header__container h1 span:nth-child(1) {
-        font-size: 6rem;
-        line-height: 6rem;
-      }
-
-      .header__container h1 span:nth-child(2) {
-        font-size: 2rem;
-      }
-
-      .header__container p {
-        margin-bottom: 3rem;
-        max-width: 600px;
-        margin-inline: auto;
-        line-height: 1.75rem;
-      }
-
-      button {
-        padding: 1.2rem 2rem;
-        outline: none;
-        border: none;
-        font-size: 1rem;
-        font-family: "Roboto", sans-serif;
-        color: var(--white);
-        background-color: var(--primary-color);
-        border-radius: 0.25rem;
-        transition: 0.3s;
-        cursor: pointer;
-      }
-
-      button:hover {
-        background-color: var(--primary-color-dark);
-      }
-
-      .socials {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 1rem;
-        margin-top: 2rem;
-      }
-
-      .socials a {
-        display: inline-flex;
-        padding: 9px 10px;
-        font-size: 1.2rem;
-        color: var(--white);
-        border: 1px solid var(--primary-color);
-        border-radius: 100%;
-        transition: 0.3s;
-      }
-
-      .socials a:hover {
-        color: var(--primary-color);
-        background-color: var(--white);
-        border-color: var(--white);
-      }
-
-      /* OPENINGS */
+      /* Cards layout */
       .openings__grid {
         display: none;
         margin-top: 50px;
         gap: 30px;
         justify-content: center;
-        padding-bottom: 3rem;
       }
-
       .openings__card {
         background: #fff;
         border-radius: 12px;
@@ -209,23 +67,19 @@
         width: 300px;
         transition: all 0.4s ease;
       }
-
       .openings__card:hover {
         transform: translateY(-10px);
         box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
       }
-
       .openings__card img {
         width: 100%;
         height: 200px;
         object-fit: cover;
       }
-
       .openings__card h3 {
         font-size: 1.5rem;
         margin-top: 15px;
       }
-
       .openings__card p {
         font-size: 0.95rem;
         color: #555;
@@ -281,6 +135,7 @@
 
       <!-- OPENINGS CARDS (hidden by default) -->
       <div class="openings__grid container" id="openings-cards">
+        <!-- Internal -->
         <a href="jobs.html" class="openings__card">
           <img src="assets/images/header-banner1.jpg" alt="Internal Openings" />
           <div class="p-4 text-center">
@@ -288,6 +143,7 @@
             <p>View all current internal career opportunities at ND Western.</p>
           </div>
         </a>
+        <!-- Referrals -->
         <a href="internships.html" class="openings__card">
           <img src="assets/images/header-banner.jpg" alt="Graduate Program" />
           <div class="p-4 text-center">
@@ -299,15 +155,28 @@
     </header>
 
     <!-- Scripts -->
+    <script src="https://unpkg.com/scrollreveal"></script>
     <script>
       const viewBtn = document.getElementById("view-openings");
       const heroContent = document.getElementById("hero-content");
       const openingsCards = document.getElementById("openings-cards");
 
+      // Animate hero on page load
+      window.addEventListener("DOMContentLoaded", () => {
+        heroContent.style.display = "block";
+        heroContent.classList.add("fly-in");
+      });
+
       // Handle hero -> openings transition
       viewBtn.addEventListener("click", () => {
-        heroContent.style.display = "none";
-        openingsCards.style.display = "flex";
+        heroContent.classList.remove("fly-in"); // reset in case it's there
+        heroContent.classList.add("fly-out");
+
+        setTimeout(() => {
+          heroContent.style.display = "none";
+          openingsCards.style.display = "flex";
+          openingsCards.classList.add("fly-in");
+        }, 1000); // Wait for fly-out to finish
       });
     </script>
   </body>
