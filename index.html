@@ -53,9 +53,10 @@
       /* Cards layout */
       .openings__grid {
         display: none;
-        margin-top: 50px;
-        gap: 30px;
+        margin-top: 80px; /* space from header */
+        gap: 40px;
         justify-content: center;
+        flex-wrap: wrap; /* allow wrap on smaller screens */
       }
       .openings__card {
         background: #fff;
@@ -64,8 +65,12 @@
         overflow: hidden;
         text-decoration: none;
         color: inherit;
-        width: 300px;
+        width: 320px; /* slightly wider */
         transition: all 0.4s ease;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
       }
       .openings__card:hover {
         transform: translateY(-10px);
@@ -77,13 +82,14 @@
         object-fit: cover;
       }
       .openings__card h3 {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
         margin-top: 15px;
       }
       .openings__card p {
         font-size: 0.95rem;
         color: #555;
-        padding-bottom: 15px;
+        padding: 0 15px 15px 15px;
+        list-style-type: disc; /* optional bullet if needed */
       }
     </style>
   </head>
@@ -136,19 +142,23 @@
       <!-- OPENINGS CARDS (hidden by default) -->
       <div class="openings__grid container" id="openings-cards">
         <!-- Internal -->
-        <a href="jobs.html" class="openings__card">
-          <img src="assets/images/header-banner1.jpg" alt="Internal Openings" />
-          <div class="p-4 text-center">
+        <a href="jobs.html" class="openings__card fly-in">
+          <img src="assets/images/header-banner-1.jpg" alt="Internal Openings" />
+          <div class="p-4">
             <h3>Internal Openings</h3>
-            <p>View all current internal career opportunities at ND Western.</p>
+            <ul>
+              <li>View all current internal career opportunities at ND Western</li>
+            </ul>
           </div>
         </a>
         <!-- Referrals -->
-        <a href="internships.html" class="openings__card">
+        <a href="internships.html" class="openings__card fly-in">
           <img src="assets/images/header-banner.jpg" alt="Graduate Program" />
-          <div class="p-4 text-center">
+          <div class="p-4">
             <h3>Referrals & Graduate Program</h3>
-            <p>Explore internships and referral opportunities to grow with us.</p>
+            <ul>
+              <li>Explore internships and referral opportunities to grow with us</li>
+            </ul>
           </div>
         </a>
       </div>
@@ -169,14 +179,14 @@
 
       // Handle hero -> openings transition
       viewBtn.addEventListener("click", () => {
-        heroContent.classList.remove("fly-in"); // reset in case it's there
+        heroContent.classList.remove("fly-in"); 
         heroContent.classList.add("fly-out");
 
         setTimeout(() => {
           heroContent.style.display = "none";
           openingsCards.style.display = "flex";
           openingsCards.classList.add("fly-in");
-        }, 1000); // Wait for fly-out to finish
+        }, 1000); 
       });
     </script>
   </body>
