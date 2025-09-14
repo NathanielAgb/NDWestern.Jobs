@@ -11,585 +11,173 @@
       rel="stylesheet"
     />
 
-    <!-- Styles (your external file can override these) -->
+    <!-- Styles -->
     <link rel="stylesheet" href="styles.css" />
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/images/favicon.png" />
-
     <style>
-      :root {
-        --nd-green: #99CC00;
-        --nd-green-dark: #88b800;
-        --text: #222;
-        --muted: #666;
-      }
-
-      /* Page / header */
-      body {
-        margin: 0;
-        font-family: "Segoe UI", Roboto, Arial, sans-serif;
-        color: var(--text);
-      }
-      header.main {
-        min-height: 80vh;
-        background: url("assets/images/header-banner.jpg") center/cover no-repeat;
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 3rem 1rem;
-        overflow: hidden;
-      }
-      header.main::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.45);
-      }
-
-      /* nav */
-      nav {
-        position: absolute;
-        top: 18px;
-        left: 0;
-        right: 0;
-        z-index: 30;
-      }
-      .nav__header {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 1rem;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
-      .nav__logo img {
-        height: 44px;
-        display: block;
-      }
-      .nav__links {
-        display: flex;
-        gap: 1rem;
-        align-items: center;
-        list-style: none;
-        margin: 0;
-        padding: 0;
-      }
-      .nav__links a {
-        color: #fff;
-        font-weight: 600;
-        padding: 0.35rem 0.6rem;
-        border-radius: 6px;
-      }
-      .nav__links a:hover {
-        background: rgba(255, 255, 255, 0.06);
-      }
-
-      /* hero content layout */
-      .header__container {
-        z-index: 20;
-        text-align: center;
-        color: #fff;
-        max-width: 980px;
-        width: 100%;
-      }
-      #hero-title {
-        font-size: 3.2rem;
-        margin: 0;
-        line-height: 1;
-        letter-spacing: 1px;
-        display: inline-block;
-        opacity: 0; /* start hidden */
-      }
-      #hero-title span {
-        display: block;
-      }
-      #hero-sub {
-        color: rgba(255, 255, 255, 0.92);
-        max-width: 700px;
-        margin: 1rem auto 1.6rem;
-        font-size: 1.05rem;
-        opacity: 0; /* start hidden */
-      }
-      #hero-btn {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      .header__btn .btn {
-        background: var(--nd-green);
-        border: 0;
-        color: #fff;
-        font-weight: 700;
-        padding: 0.65rem 1.1rem;
-        border-radius: 8px;
-      }
-      .header__btn .btn:hover {
-        background: var(--nd-green-dark);
-      }
-
-      .socials {
-        margin-top: 18px;
-        list-style: none;
-        padding: 0;
-        display: flex;
-        gap: 12px;
-        justify-content: center;
-      }
-      .socials li {
-        opacity: 0;
-        transform: translateY(8px);
-      }
-      .socials a {
-        color: #fff;
-        font-size: 1.1rem;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 38px;
-        height: 38px;
-        border-radius: 6px;
-        background: rgba(255, 255, 255, 0.06);
-      }
-
-      /* openings cards (hidden initially) */
-      #openings-cards {
+      /* Smooth transitions */
+      .hidden {
         display: none;
-        padding: 3.5rem 1rem;
-        background: #fafafa;
-      }
-      .openings-inner {
-        max-width: 1200px;
-        margin: 0 auto;
       }
 
-      .sc-list-card {
-        border-radius: 12px;
-        overflow: hidden;
-        transition: transform 0.28s ease, box-shadow 0.28s ease;
-        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
-        background: #fff;
+      .fly-out {
+        animation: flyOut 1s forwards;
       }
-      .sc-list-card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 14px 42px rgba(0, 0, 0, 0.12);
-      }
-      .sc-list-card .card-img img {
-        width: 100%;
-        height: 220px;
-        object-fit: cover;
-        display: block;
-      }
-      .sc-list-card .card-body {
-        padding: 22px;
-      }
-      .card-date {
-        color: var(--muted);
-        font-size: 0.9rem;
-        margin-bottom: 0.6rem;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-      }
-      .card-title {
-        font-size: 1.25rem;
-        margin: 0 0 0.6rem;
-        font-weight: 600;
-        color: #111;
-      }
-      .p-text {
-        color: #444;
-        margin-bottom: 0.9rem;
-      }
-      .card-author {
-        display: flex;
-        align-items: center;
-        gap: 0.8rem;
-        margin-top: 8px;
-      }
-      .card-author-img img {
-        width: 44px;
-        height: 44px;
-        object-fit: cover;
-        border-radius: 50%;
-      }
-      .card-author-name {
-        color: var(--muted);
-        font-size: 0.92rem;
+      .fly-in {
+        animation: flyIn 1s forwards;
       }
 
-      /* animation keyframes - initial fly-in */
-      @keyframes flyInLeft {
-        from {
-          opacity: 0;
-          transform: translateX(-40px);
-        }
-        to {
-          opacity: 1;
-          transform: translateX(0);
-        }
-      }
-      @keyframes flyInRight {
-        from {
-          opacity: 0;
-          transform: translateX(40px);
-        }
-        to {
-          opacity: 1;
-          transform: translateX(0);
-        }
-      }
-      @keyframes flyInUp {
-        from {
-          opacity: 0;
-          transform: translateY(30px) scale(0.98);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0) scale(1);
-        }
-      }
-
-      /* classes to trigger */
-      .in-left {
-        animation: flyInLeft 650ms cubic-bezier(.2, .9, .3, 1) both;
-      }
-      .in-right {
-        animation: flyInRight 650ms cubic-bezier(.2, .9, .3, 1) both;
-      }
-      .in-up {
-        animation: flyInUp 650ms cubic-bezier(.2, .9, .3, 1) both;
-      }
-
-      /* hero fly-out (used when clicking view openings) */
-      @keyframes flyOutUp {
+      @keyframes flyOut {
         from {
           opacity: 1;
           transform: translateY(0);
         }
         to {
           opacity: 0;
-          transform: translateY(-40px) scale(.98);
+          transform: translateY(-50px);
         }
       }
-      @keyframes flyOutLeft {
-        from {
-          opacity: 1;
-          transform: translateX(0);
-        }
-        to {
-          opacity: 0;
-          transform: translateX(-60px) scale(.98);
-        }
-      }
-      @keyframes flyOutRight {
-        from {
-          opacity: 1;
-          transform: translateX(0);
-        }
-        to {
-          opacity: 0;
-          transform: translateX(60px) scale(.98);
-        }
-      }
-      .fly-out-up {
-        animation: flyOutUp 520ms cubic-bezier(.2, .9, .3, 1) both;
-      }
-      .fly-out-left {
-        animation: flyOutLeft 520ms cubic-bezier(.2, .9, .3, 1) both;
-      }
-      .fly-out-right {
-        animation: flyOutRight 520ms cubic-bezier(.2, .9, .3, 1) both;
-      }
-
-      /* cards entrance when shown */
-      @keyframes cardInLeft {
+      @keyframes flyIn {
         from {
           opacity: 0;
-          transform: translateX(-40px) scale(.98);
+          transform: translateY(50px);
         }
         to {
           opacity: 1;
-          transform: translateX(0) scale(1);
-        }
-      }
-      @keyframes cardInRight {
-        from {
-          opacity: 0;
-          transform: translateX(40px) scale(.98);
-        }
-        to {
-          opacity: 1;
-          transform: translateX(0) scale(1);
-        }
-      }
-      .card-in-left {
-        animation: cardInLeft 580ms cubic-bezier(.2, .9, .3, 1) both;
-      }
-      .card-in-right {
-        animation: cardInRight 580ms cubic-bezier(.2, .9, .3, 1) both;
-      }
-
-      /* responsive tweak */
-      @media (max-width: 768px) {
-        #hero-title {
-          font-size: 2.1rem;
-        }
-        .sc-list-card .card-img img {
-          height: 160px;
+          transform: translateY(0);
         }
       }
 
-      /* prefers-reduced-motion: show instantly */
-      @media (prefers-reduced-motion: reduce) {
-        .in-left,
-        .in-right,
-        .in-up,
-        .card-in-left,
-        .card-in-right,
-        .fly-out-left,
-        .fly-out-right,
-        .fly-out-up {
-          animation: none !important;
-          opacity: 1 !important;
-          transform: none !important;
-        }
+      /* Cards layout */
+      .openings__grid {
+        display: none;
+        margin-top: 50px;
+        gap: 30px;
+        justify-content: center;
+      }
+      .openings__card {
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+        overflow: hidden;
+        text-decoration: none;
+        color: inherit;
+        width: 300px;
+        transition: all 0.4s ease;
+      }
+      .openings__card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+      }
+      .openings__card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+      .openings__card h3 {
+        font-size: 1.5rem;
+        margin-top: 15px;
+      }
+      .openings__card p {
+        font-size: 0.95rem;
+        color: #555;
+        padding-bottom: 15px;
       }
     </style>
   </head>
   <body>
-    <!-- HEADER / HERO -->
-    <header class="main" role="banner">
-      <nav aria-label="Main navigation">
+    <!-- HEADER -->
+    <header class="main">
+      <nav>
         <div class="nav__header">
           <div class="nav__logo">
-            <a href="index.html"><img src="assets/logo.png" alt="ND Western Logo"></a>
+            <a href="index.html">
+              <img src="assets/logo.png" alt="ND Western Logo" />
+            </a>
           </div>
-
-          <ul class="nav__links" id="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
+          <div class="nav__menu__btn" id="menu-btn">
+            <i class="ri-menu-3-line"></i>
+          </div>
         </div>
+        <ul class="nav__links" id="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
       </nav>
 
-      <div class="header__container" id="hero-content" aria-live="polite">
-        <h1 id="hero-title"><span>ND</span><span>Western Careers</span></h1>
-
-        <p id="hero-sub">
-          Explore exciting opportunities with ND Western. Join a professional and trusted team driving innovation, growth, and success across the energy industry.
+      <!-- HERO / LANDING HEADER -->
+      <div class="header__container" id="hero-content">
+        <h1>
+          <span>ND</span>
+          <span>Western Careers</span>
+        </h1>
+        <p>
+          Explore exciting opportunities with ND Western. Join a professional and
+          trusted team driving innovation, growth, and success across the energy
+          industry.
         </p>
-
         <div class="header__btn">
-          <button id="view-openings" class="btn" aria-controls="openings-cards" aria-expanded="false">
-            View Openings <i class="ri-arrow-right-long-line"></i>
+          <button class="btn" id="view-openings">
+            View Openings
+            <i class="ri-arrow-right-long-line"></i>
           </button>
         </div>
-
-        <ul class="socials" id="hero-socials" aria-hidden="false">
-          <li><a href="#" aria-label="facebook"><i class="ri-facebook-fill"></i></a></li>
-          <li><a href="#" aria-label="twitter"><i class="ri-twitter-fill"></i></a></li>
-          <li><a href="#" aria-label="linkedin"><i class="ri-linkedin-fill"></i></a></li>
-          <li><a href="#" aria-label="instagram"><i class="ri-instagram-line"></i></a></li>
+        <ul class="socials">
+          <li><a href="#"><i class="ri-facebook-fill"></i></a></li>
+          <li><a href="#"><i class="ri-twitter-fill"></i></a></li>
+          <li><a href="#"><i class="ri-linkedin-fill"></i></a></li>
+          <li><a href="#"><i class="ri-instagram-line"></i></a></li>
         </ul>
+      </div>
+
+      <!-- OPENINGS CARDS (hidden by default) -->
+      <div class="openings__grid container" id="openings-cards">
+        <!-- Internal -->
+        <a href="jobs.html" class="openings__card">
+          <img src="assets/images/header-banner1.jpg" alt="Internal Openings" />
+          <div class="p-4 text-center">
+            <h3>Internal Openings</h3>
+            <p>View all current internal career opportunities at ND Western.</p>
+          </div>
+        </a>
+        <!-- Referrals -->
+        <a href="internships.html" class="openings__card">
+          <img src="assets/images/header-banner.jpg" alt="Graduate Program" />
+          <div class="p-4 text-center">
+            <h3>Referrals & Graduate Program</h3>
+            <p>Explore internships and referral opportunities to grow with us.</p>
+          </div>
+        </a>
       </div>
     </header>
 
-    <!-- OPENINGS CARDS (hidden until view-openings clicked) -->
-    <section id="openings-cards" aria-hidden="true">
-      <div class="openings-inner">
-        <div class="text-center mb-4">
-          <h2 class="mb-1">Choose Your Path</h2>
-          <p class="mb-0" style="color:var(--muted)">Click to view internal or referral opportunities</p>
-        </div>
-
-        <div class="row gx-4 gy-4 justify-content-center align-items-stretch">
-          <!-- Internal card (left) -->
-          <div class="col-12 col-md-6">
-            <a href="jobs.html" class="sc-list-card card h-100" id="card-left" role="link" >
-              <div class="card-img">
-                <img src="assets/images/header-banner1.jpg" alt="Internal Openings">
-              </div>
-              <div class="card-body">
-                <div class="card-date">
-                  <span class="icon-sm"><i class="fas fa-clock"></i></span>
-                  <span>Published: Sep 16, 2025</span>
-                </div>
-                <h5 class="card-title">Internal Openings</h5>
-                <p class="p-text">View current internal career opportunities and apply via the internal portal.</p>
-
-                <div class="card-author d-flex align-items-center">
-                  <div class="card-author-img">
-                    <img src="assets/images/blog/author-1.jpg" alt="HR Team">
-                  </div>
-                  <div class="card-author-name">by <strong>HR Team</strong></div>
-                  <div style="margin-left:auto">
-                    <button class="btn btn-sm btn-outline-success btn-cta">View</button>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-
-          <!-- Referral card (right) -->
-          <div class="col-12 col-md-6">
-            <a href="internships.html" class="sc-list-card card h-100" id="card-right" role="link">
-              <div class="card-img">
-                <img src="assets/images/header-banner.jpg" alt="Referral & Graduate Program">
-              </div>
-              <div class="card-body">
-                <div class="card-date">
-                  <span class="icon-sm"><i class="fas fa-clock"></i></span>
-                  <span>Published: Sep 16, 2025</span>
-                </div>
-                <h5 class="card-title">Referrals & Graduate Program</h5>
-                <p class="p-text">Explore internships, graduate trainee opportunities and referral openings.</p>
-
-                <div class="card-author d-flex align-items-center">
-                  <div class="card-author-img">
-                    <img src="assets/images/blog/author-2.jpg" alt="Talent Acquisition">
-                  </div>
-                  <div class="card-author-name">by <strong>Talent Acquisition</strong></div>
-                  <div style="margin-left:auto">
-                    <button class="btn btn-sm btn-outline-primary btn-cta">View</button>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-
+    <!-- Scripts -->
+    <script src="https://unpkg.com/scrollreveal"></script>
     <script>
-      (function () {
-        const viewBtn = document.getElementById('view-openings');
-        const heroContainer = document.getElementById('hero-content');
-        const heroTitle = document.getElementById('hero-title');
-        const heroSub = document.getElementById('hero-sub');
-        const heroBtn = document.getElementById('view-openings'); // same button
-        const heroSocials = document.getElementById('hero-socials');
-        const openingsSection = document.getElementById('openings-cards');
-        const cardLeft = document.getElementById('card-left');
-        const cardRight = document.getElementById('card-right');
+      const viewBtn = document.getElementById("view-openings");
+      const heroContent = document.getElementById("hero-content");
+      const openingsCards = document.getElementById("openings-cards");
 
-        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      // Animate hero on page load
+      window.addEventListener("DOMContentLoaded", () => {
+        heroContent.style.display = "block";
+        heroContent.classList.add("fly-in");
+      });
 
-        // Hide openings initially
-        openingsSection.style.display = 'none';
-        openingsSection.setAttribute('aria-hidden', 'true');
+      // Handle hero -> openings transition
+      viewBtn.addEventListener("click", () => {
+        heroContent.classList.remove("fly-in"); // reset in case it's there
+        heroContent.classList.add("fly-out");
 
-        // initial hero fly-in on page load
-        function heroInitialIn() {
-          if (reduceMotion) {
-            // show instantly
-            heroTitle.style.opacity = 1;
-            heroSub.style.opacity = 1;
-            heroBtn.style.opacity = 1;
-            heroSocials.querySelectorAll('li').forEach(li => (li.style.opacity = 1));
-            return;
-          }
-
-          // staggered entrance
-          // small delay to ensure styles applied
-          setTimeout(() => {
-            heroTitle.classList.add('in-left');
-          }, 120);
-
-          setTimeout(() => {
-            heroSub.classList.add('in-right');
-          }, 320);
-
-          setTimeout(() => {
-            heroBtn.classList.add('in-up');
-          }, 640);
-
-          const socials = Array.from(heroSocials.querySelectorAll('li'));
-          socials.forEach((li, i) => {
-            setTimeout(() => li.classList.add('in-up'), 820 + i * 110);
-          });
-        }
-
-        // show cards after flying hero out
-        function showCards() {
-          openingsSection.style.display = 'block';
-          openingsSection.setAttribute('aria-hidden', 'false');
-
-          // animate the cards in (stagger)
-          cardLeft.classList.add('card-in-left');
-          setTimeout(() => {
-            cardRight.classList.add('card-in-right');
-          }, 140);
-
-          // focus first interactive item for accessibility
-          setTimeout(() => {
-            const firstLink = cardLeft.querySelector('a, button') || cardLeft;
-            if (firstLink && typeof firstLink.focus === 'function') firstLink.focus();
-          }, 350);
-        }
-
-        function showCardsInstant() {
-          openingsSection.style.display = 'block';
-          openingsSection.setAttribute('aria-hidden', 'false');
-          cardLeft.style.opacity = 1;
-          cardRight.style.opacity = 1;
-        }
-
-        // animate hero out then show cards
-        function animateHeroOutThenShowCards() {
-          // prevent re-trigger
-          if (viewBtn.disabled) return;
-          viewBtn.disabled = true;
-          viewBtn.setAttribute('aria-disabled', 'true');
-
-          if (reduceMotion) {
-            heroContainer.style.display = 'none';
-            showCardsInstant();
-            return;
-          }
-
-          // remove any existing "in" classes so out animations are clean
-          heroTitle.classList.remove('in-left');
-          heroSub.classList.remove('in-right');
-          heroBtn.classList.remove('in-up');
-          heroSocials.querySelectorAll('li').forEach(li => li.classList.remove('in-up'));
-
-          // staggered fly out
-          heroTitle.classList.add('fly-out-left');
-          setTimeout(() => heroSub.classList.add('fly-out-right'), 80);
-          setTimeout(() => heroBtn.classList.add('fly-out-up'), 160);
-          setTimeout(() => heroSocials.classList.add('fly-out-up'), 240);
-
-          // after out animation, hide hero and show cards
-          setTimeout(() => {
-            heroContainer.style.display = 'none';
-            showCards();
-          }, 700);
-        }
-
-        // events
-        document.addEventListener('DOMContentLoaded', heroInitialIn);
-        viewBtn.addEventListener('click', animateHeroOutThenShowCards);
-
-        // if the user navigates back to this page (e.g. using browser back), ensure hero animates again
-        window.addEventListener('pageshow', (event) => {
-          if (event.persisted) {
-            // re-init if restored from BF cache
-            heroContainer.style.display = '';
-            openingsSection.style.display = 'none';
-            heroTitle.classList.remove('fly-out-left', 'in-left');
-            heroSub.classList.remove('fly-out-right', 'in-right');
-            heroBtn.classList.remove('fly-out-up', 'in-up');
-            heroSocials.querySelectorAll('li').forEach(li => li.classList.remove('fly-out-up', 'in-up'));
-            viewBtn.disabled = false;
-            setTimeout(heroInitialIn, 50);
-          }
-        });
-      })();
+        setTimeout(() => {
+          heroContent.style.display = "none";
+          openingsCards.style.display = "flex";
+          openingsCards.classList.add("fly-in");
+        }, 1000); // Wait for fly-out to finish
+      });
     </script>
   </body>
 </html>
