@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ND Western | Careers</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- Remixicon -->
     <link
@@ -12,231 +11,157 @@
       rel="stylesheet"
     />
 
-    <!-- Bootstrap -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-
-    <!-- Custom Styles -->
+    <!-- Styles -->
     <style>
-      body {
+      @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+      * {
         margin: 0;
-        font-family: Arial, sans-serif;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Roboto", sans-serif;
       }
 
-      /* Smooth transitions */
-      .hidden {
-        display: none;
-      }
-      .fly-out {
-        animation: flyOut 1s forwards;
-      }
-      .fly-in {
-        animation: flyIn 1s forwards;
-      }
-
-      @keyframes flyOut {
-        from {
-          opacity: 1;
-          transform: translateY(0);
-        }
-        to {
-          opacity: 0;
-          transform: translateY(-50px);
-        }
-      }
-      @keyframes flyIn {
-        from {
-          opacity: 0;
-          transform: translateY(50px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
+      body {
+        background: #fff;
+        color: #333;
       }
 
       /* Hero Section */
-      header.main {
+      .hero {
         position: relative;
-        background: url("assets/images/header-banner1.jpg") center/cover
-          no-repeat;
-        color: #fff;
-        min-height: 100vh;
+        height: 70vh;
+        background: url("header.png") center/cover no-repeat;
         display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-      }
-
-      nav {
-        display: flex;
-        justify-content: space-between;
+        justify-content: center;
         align-items: center;
-        padding: 20px 40px;
-        background: rgba(0, 0, 0, 0.5);
-      }
-      .nav__links {
-        list-style: none;
-        display: flex;
-        gap: 20px;
-      }
-      .nav__links li a {
+        flex-direction: column;
+        text-align: center;
         color: #fff;
-        text-decoration: none;
       }
 
-      .header__container {
-        text-align: center;
-        max-width: 800px;
-        margin: auto;
-        padding: 100px 20px;
+      .hero::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
       }
-      .header__container h1 span {
-        display: block;
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+      }
+
+      .hero h1 {
         font-size: 3rem;
-        font-weight: bold;
+        font-weight: 700;
+        margin-bottom: 1rem;
       }
-      .header__container p {
-        margin-top: 15px;
-        font-size: 1.1rem;
+
+      .hero p {
+        font-size: 1.2rem;
+        font-weight: 400;
       }
-      .header__btn {
-        margin-top: 30px;
+
+      /* Recent Jobs Section */
+      .jobs-section {
+        max-width: 1100px;
+        margin: 4rem auto;
+        padding: 0 1rem;
       }
-      .btn {
+
+      .jobs-section h2 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        text-align: center;
+        font-weight: 700;
+      }
+
+      .jobs-table {
+        width: 100%;
+        border-collapse: collapse;
+        background: #fff;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        overflow: hidden;
+      }
+
+      .jobs-table thead {
+        background: #ed1d24;
+        color: #fff;
+      }
+
+      .jobs-table th,
+      .jobs-table td {
+        padding: 1rem;
+        text-align: left;
+        font-size: 1rem;
+      }
+
+      .jobs-table tr:nth-child(even) {
+        background: #f9f9f9;
+      }
+
+      .apply-btn {
         background: #ed1d24;
         color: #fff;
         border: none;
-        padding: 12px 24px;
-        border-radius: 8px;
+        padding: 0.5rem 1rem;
+        border-radius: 6px;
         cursor: pointer;
-      }
-      .btn:hover {
-        background: #b80314;
-      }
-      .socials {
-        display: flex;
-        justify-content: center;
-        gap: 15px;
-        list-style: none;
-        padding: 0;
-        margin-top: 30px;
-      }
-      .socials a {
-        color: #fff;
-        font-size: 1.5rem;
+        transition: background 0.3s ease;
       }
 
-      /* Jobs Table */
-      .pg-jobs {
-        background: #f9f9f9;
-        padding: 60px 20px;
-      }
-      table th,
-      table td {
-        text-align: center;
-        vertical-align: middle;
+      .apply-btn:hover {
+        background: #b80314;
       }
     </style>
   </head>
-
   <body>
-    <!-- HEADER -->
-    <header class="main">
-      <nav>
-        <div class="nav__logo">
-          <a href="index.html">
-            <img src="assets/logo.png" alt="ND Western Logo" height="40" />
-          </a>
-        </div>
-        <ul class="nav__links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About Us</a></li>
-        </ul>
-      </nav>
-
-      <!-- HERO -->
-      <div class="header__container" id="hero-content">
-        <h1>
-          <span>ND</span>
-          <span>Western Careers</span>
-        </h1>
-        <p>
-          Explore exciting opportunities with ND Western. Join a professional
-          and trusted team driving innovation, growth, and success across the
-          energy industry.
-        </p>
-        <div class="header__btn">
-          <button class="btn" id="view-openings">
-            View Openings <i class="ri-arrow-right-long-line"></i>
-          </button>
-        </div>
-        <ul class="socials">
-          <li><a href="#"><i class="ri-facebook-fill"></i></a></li>
-          <li><a href="#"><i class="ri-twitter-fill"></i></a></li>
-          <li><a href="#"><i class="ri-linkedin-fill"></i></a></li>
-          <li><a href="#"><i class="ri-instagram-line"></i></a></li>
-        </ul>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Join Our Team</h1>
+        <p>Be part of ND Western’s success story</p>
       </div>
-    </header>
+    </section>
 
-    <!-- JOBS TABLE -->
-    <main class="pg-jobs">
-      <div class="container">
-        <h2 class="text-center mb-4">Recent Jobs</h2>
-        <table class="table table-striped">
-          <thead class="table-dark">
-            <tr>
-              <th>SN</th>
-              <th>Job Title</th>
-              <th>Details</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>General Operator</td>
-              <td>
-                <a
-                  href="jobs_single.html"
-                  class="btn btn-secondary text-uppercase"
-                  >details</a
-                >
-              </td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>Finance Analyst</td>
-              <td>
-                <a href="#" class="btn btn-secondary text-uppercase"
-                  >details</a
-                >
-              </td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>HR Coordinator</td>
-              <td>
-                <a href="#" class="btn btn-secondary text-uppercase"
-                  >details</a
-                >
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </main>
-
-    <!-- Scripts -->
-    <script>
-      const viewBtn = document.getElementById("view-openings");
-      const heroContent = document.getElementById("hero-content");
-
-      window.addEventListener("DOMContentLoaded", () => {
-        heroContent.style.display = "block";
-        heroContent.classList.add("fly-in");
-      });
-    </script>
+    <!-- Recent Jobs Section -->
+    <section class="jobs-section">
+      <h2>Recent Jobs</h2>
+      <table class="jobs-table">
+        <thead>
+          <tr>
+            <th>Job Title</th>
+            <th>Location</th>
+            <th>Posted Date</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Business Analyst</td>
+            <td>Lagos</td>
+            <td>Sept 10, 2025</td>
+            <td><button class="apply-btn">Apply</button></td>
+          </tr>
+          <tr>
+            <td>Finance Officer</td>
+            <td>Warri</td>
+            <td>Sept 8, 2025</td>
+            <td><button class="apply-btn">Apply</button></td>
+          </tr>
+          <tr>
+            <td>HR Intern</td>
+            <td>Remote</td>
+            <td>Sept 5, 2025</td>
+            <td><button class="apply-btn">Apply</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
   </body>
 </html>
