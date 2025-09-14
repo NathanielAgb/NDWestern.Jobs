@@ -41,6 +41,7 @@
         padding: 25px 30px;
         border-radius: 12px;
         box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+        overflow-x: auto; /* allows horizontal scroll on very small screens */
       }
 
       /* Heading container */
@@ -62,16 +63,21 @@
         margin: 0;
       }
 
-      /* Table responsive tweaks */
+      /* Responsive table tweaks */
       .jobs-table-container table {
         width: 100%;
         table-layout: auto;
       }
 
-      /* Mobile & Portrait optimization */
-      @media (max-width: 768px) {
+      .jobs-table-container th,
+      .jobs-table-container td {
+        white-space: nowrap;
+      }
+
+      /* Mobile & portrait optimizations */
+      @media (max-width: 768px), (orientation: portrait) {
         .jobs-table-container {
-          padding: 20px 15px;
+          padding: 15px;
         }
 
         .jobs-table-header h2 {
@@ -79,7 +85,7 @@
         }
 
         .jobs-table-header p {
-          font-size: 0.95rem;
+          font-size: 0.9rem;
         }
 
         .jobs-table-container table,
@@ -105,12 +111,25 @@
         }
 
         .jobs-table-header p {
-          font-size: 0.85rem;
+          font-size: 0.8rem;
         }
 
         .jobs-table-container .btn {
           font-size: 10px;
           padding: 2px 5px;
+        }
+      }
+
+      /* Optional: ensure nav links wrap nicely on mobile */
+      .nav__links {
+        display: flex;
+        gap: 20px;
+      }
+
+      @media (max-width: 768px) {
+        .nav__links {
+          flex-direction: column;
+          gap: 10px;
         }
       }
     </style>
@@ -139,6 +158,7 @@
       <!-- HERO (with floating jobs table) -->
       <div class="header__container">
         <div class="jobs-table-container">
+          <!-- Heading container for proper alignment -->
           <div class="jobs-table-header">
             <h2>Available Job Openings</h2>
             <p>Explore the latest career opportunities at ND Western</p>
