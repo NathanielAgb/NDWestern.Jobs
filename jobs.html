@@ -44,21 +44,25 @@
         padding: 25px 30px;
         border-radius: 12px;
         box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
-        text-align: center; /* center heading, description, and table */
       }
 
-      /* Table heading */
-      .jobs-table-container h2 {
+      /* Heading container */
+      .jobs-table-header {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .jobs-table-header h2 {
         font-size: 1.8rem;
-        margin-bottom: 10px;
         font-weight: bold;
         color: #333;
+        margin-bottom: 10px;
       }
 
-      .jobs-table-container p {
+      .jobs-table-header p {
         font-size: 1rem;
-        margin-bottom: 20px;
         color: #555;
+        margin: 0;
       }
 
       /* Make table responsive */
@@ -82,11 +86,11 @@
           padding: 4px 8px;
         }
 
-        .jobs-table-container h2 {
+        .jobs-table-header h2 {
           font-size: 1.5rem;
         }
 
-        .jobs-table-container p {
+        .jobs-table-header p {
           font-size: 0.9rem;
         }
       }
@@ -116,9 +120,11 @@
       <!-- HERO (with floating jobs table) -->
       <div class="header__container">
         <div class="jobs-table-container">
-          <!-- Centered heading & description -->
-          <h2>Available Job Openings</h2>
-          <p>Explore the latest career opportunities at ND Western and find a role that suits your skills and ambitions.</p>
+          <!-- Heading container for proper alignment -->
+          <div class="jobs-table-header">
+            <h2>Available Job Openings</h2>
+            <p>Explore the latest career opportunities at ND Western and find a role that suits your skills and ambitions.</p>
+          </div>
 
           <table class="table table-striped text-center">
             <thead class="table-dark">
