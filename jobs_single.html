@@ -32,35 +32,6 @@
           transform: translateY(0);
         }
       }
-
-      /* Job description card */
-      .job__card {
-        max-width: 900px;
-        margin: 100px auto;
-        background: #fff;
-        border-radius: 12px;
-        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
-        padding: 30px;
-      }
-      .job__card h2 {
-        font-size: 1.8rem;
-        margin-bottom: 20px;
-        text-align: center;
-      }
-      table {
-        width: 100%;
-        border-collapse: collapse;
-      }
-      th,
-      td {
-        border: 1px solid #ddd;
-        padding: 12px;
-        text-align: left;
-      }
-      th {
-        background: #f5f5f5;
-        font-weight: 600;
-      }
     </style>
   </head>
   <body>
@@ -83,49 +54,18 @@
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
+
+      <!-- HERO / LANDING HEADER -->
+      <div class="header__container fly-in" id="hero-content">
+        <!-- You can add a background banner or heading here if needed -->
+      </div>
     </header>
 
-    <!-- JOB DESCRIPTION CARD -->
-    <div class="job__card fly-in" id="job-card">
-      <h2>Job Openings</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Position</th>
-            <th>Department</th>
-            <th>Location</th>
-            <th>Application Deadline</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Business Analyst</td>
-            <td>Finance</td>
-            <td>Lagos</td>
-            <td>30th Sept, 2025</td>
-          </tr>
-          <tr>
-            <td>Graduate Trainee</td>
-            <td>Operations</td>
-            <td>Warri</td>
-            <td>15th Oct, 2025</td>
-          </tr>
-          <tr>
-            <td>HR Officer</td>
-            <td>Human Resources</td>
-            <td>Lagos</td>
-            <td>20th Oct, 2025</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
     <!-- Scripts -->
-    <script src="https://unpkg.com/scrollreveal"></script>
     <script>
-      // Animate card on load
+      // Animate hero on load
       window.addEventListener("DOMContentLoaded", () => {
-        document.getElementById("job-card").classList.add("fly-in");
+        document.getElementById("hero-content").classList.add("fly-in");
       });
     </script>
   </body>
