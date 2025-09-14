@@ -50,36 +50,37 @@
       /* Floating Job Card */
       .job-card {
         background: #fff;
-        color: #222; /* ensure text visible */
+        color: #222;
         width: 100%;
-        max-width: 700px;
-        max-height: 90vh;
-        overflow-y: auto;
-        padding: 2rem;
+        max-width: 600px; /* slightly smaller */
+        max-height: 85vh; /* avoid scroll */
+        padding: 1.5rem;
         border-radius: 14px;
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
         text-align: left;
+        overflow-y: auto;
       }
 
       .job-card h1 {
         margin: 0 0 1rem 0;
-        font-size: 2rem;
+        font-size: 1.8rem;
         color: #ed1d24;
         text-align: center;
       }
 
       .job-card h4 {
-        margin-top: 1.2rem;
-        margin-bottom: 0.5rem;
+        margin-top: 1rem;
+        margin-bottom: 0.4rem;
         color: #ed1d24;
+        font-size: 1.05rem;
       }
 
       .job-card p,
       .job-card ul,
       .job-card li {
         color: #333;
-        font-size: 0.95rem;
-        line-height: 1.6;
+        font-size: 0.9rem;
+        line-height: 1.5;
       }
 
       .job-card ul {
@@ -90,19 +91,19 @@
         display: flex;
         flex-wrap: wrap;
         gap: 1rem;
-        font-size: 0.9rem;
+        font-size: 0.85rem;
         color: #555;
         margin-bottom: 1rem;
       }
 
       .btn {
         display: inline-block;
-        padding: 0.6rem 1.2rem;
+        padding: 0.5rem 1rem;
         background: #ed1d24;
         color: #fff;
         border-radius: 6px;
         text-decoration: none;
-        font-size: 0.9rem;
+        font-size: 0.85rem;
         transition: background 0.3s ease;
       }
 
@@ -139,40 +140,37 @@
 
           <div class="job-meta">
             <span><i class="ri-map-pin-line"></i> Lagos</span>
-            <span><i class="ri-calendar-line"></i> Posted: Sept 1, 2025</span>
+            <span><i class="ri-calendar-line"></i> Sept 1, 2025</span>
             <span><i class="ri-briefcase-line"></i> Full-Time</span>
           </div>
 
           <p>
-            We are seeking motivated and detail-oriented <b>General Operators</b>
-            to join our production team. The ideal candidate will support daily
-            operations, ensuring efficiency, quality, and safety standards are
-            consistently maintained.
+            We are seeking <b>motivated and detail-oriented General Operators</b>
+            to join our production team and support daily operations while
+            maintaining <b>efficiency, quality, and safety standards</b>.
           </p>
 
           <h4>Your Role:</h4>
           <ul>
-            <li>Operate production machinery and equipment.</li>
-            <li>Ensure product quality and consistency.</li>
+            <li>Operate and monitor production machinery.</li>
+            <li>Ensure products meet quality standards.</li>
             <li>Maintain a safe and clean work environment.</li>
-            <li>Collaborate with supervisors and team members to meet targets.</li>
+            <li>Work with supervisors to meet production targets.</li>
           </ul>
 
           <h4>Requirements:</h4>
           <ul>
             <li>Minimum 3 years of relevant experience.</li>
             <li>Strong attention to detail and problem-solving skills.</li>
-            <li>Ability to work in shifts and adapt to a fast-paced environment.</li>
-            <li>
-              Qualification: High School Diploma / Bachelor’s Degree preferred.
-            </li>
+            <li>Ability to work shifts in a fast-paced environment.</li>
+            <li>Diploma or Bachelor’s Degree preferred.</li>
           </ul>
 
           <h4>What We Offer:</h4>
           <ul>
-            <li>Competitive compensation package.</li>
+            <li>Competitive pay and benefits.</li>
             <li>Career growth opportunities.</li>
-            <li>Supportive and diverse work environment.</li>
+            <li>Inclusive and supportive workplace culture.</li>
           </ul>
 
           <div class="mt-4" style="text-align: center; margin-top: 1rem;">
@@ -184,7 +182,6 @@
 
     <!-- Scripts -->
     <script>
-      // Animate hero on load
       window.addEventListener("DOMContentLoaded", () => {
         document.querySelector(".job-card").classList.add("fly-in");
       });
