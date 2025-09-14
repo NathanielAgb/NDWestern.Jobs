@@ -62,24 +62,30 @@
       /* Hero Section */
       .hero {
         text-align: center;
-        padding: 60px 20px 20px;
+        padding: 60px 20px;
         background: url("assets/images/header-banner1.jpg") no-repeat center/cover;
-        color: white;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
       }
       .hero h1 {
         font-size: 2.5rem;
-        margin: 0;
+        margin-bottom: 20px;
+        color: white;
+        text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
       }
 
-      /* Job Card */
+      /* Job Card inside hero */
       .job-card {
         max-width: 900px;
-        margin: 40px auto;
         background: #fff;
         border-radius: 12px;
         box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
         padding: 30px;
         animation: flyIn 1s ease forwards;
+        text-align: left;
       }
       .job-card h2 {
         margin-bottom: 15px;
@@ -129,58 +135,56 @@
         </ul>
       </nav>
 
-      <!-- Hero -->
+      <!-- HERO with job card inside -->
       <section class="hero">
         <h1>General Operator</h1>
+
+        <div class="job-card fly-in">
+          <h2>Job Description</h2>
+          <div class="job-meta">
+            <span><i class="ri-map-pin-line"></i> Location: Lagos</span>
+            <span><i class="ri-calendar-line"></i> Posted: Sept 1, 2025</span>
+            <span><i class="ri-briefcase-line"></i> Full-Time</span>
+          </div>
+
+          <p>
+            We are seeking motivated and detail-oriented General Operators to
+            join our production team. The ideal candidate will support daily
+            operations, ensuring efficiency, quality, and safety standards are
+            maintained.
+          </p>
+
+          <h4>Your Role:</h4>
+          <ul>
+            <li>Operate production machinery and equipment.</li>
+            <li>Ensure product quality and consistency.</li>
+            <li>Maintain a safe and clean work environment.</li>
+            <li>Collaborate with supervisors and team members to meet targets.</li>
+          </ul>
+
+          <h4>Requirements:</h4>
+          <ul>
+            <li>Minimum 3 years of relevant experience.</li>
+            <li>Strong attention to detail and problem-solving skills.</li>
+            <li>Ability to work in shifts and adapt to a fast-paced environment.</li>
+            <li>
+              Qualification: High School Diploma / Bachelor’s Degree preferred.
+            </li>
+          </ul>
+
+          <h4>What We Offer:</h4>
+          <ul>
+            <li>Competitive compensation package.</li>
+            <li>Career growth opportunities.</li>
+            <li>Supportive and diverse work environment.</li>
+          </ul>
+
+          <div class="mt-4">
+            <a href="apply.html" class="btn">Apply Now</a>
+          </div>
+        </div>
       </section>
     </header>
-
-    <!-- Job Details Card -->
-    <section class="job-card fly-in">
-      <h2>Job Description</h2>
-      <div class="job-meta">
-        <span><i class="ri-map-pin-line"></i> Location: Lagos</span>
-        <span><i class="ri-calendar-line"></i> Posted: Sept 1, 2025</span>
-        <span><i class="ri-briefcase-line"></i> Full-Time</span>
-      </div>
-
-      <p>
-        We are seeking motivated and detail-oriented General Operators to join
-        our production team. The ideal candidate will support daily operations,
-        ensuring efficiency, quality, and safety standards are maintained.
-      </p>
-
-      <h4>Your Role:</h4>
-      <ul>
-        <li>Operate production machinery and equipment.</li>
-        <li>Ensure product quality and consistency.</li>
-        <li>Maintain a safe and clean work environment.</li>
-        <li>
-          Collaborate with supervisors and team members to meet targets.
-        </li>
-      </ul>
-
-      <h4>Requirements:</h4>
-      <ul>
-        <li>Minimum 3 years of relevant experience.</li>
-        <li>Strong attention to detail and problem-solving skills.</li>
-        <li>
-          Ability to work in shifts and adapt to a fast-paced environment.
-        </li>
-        <li>Qualification: High School Diploma / Bachelor’s Degree preferred.</li>
-      </ul>
-
-      <h4>What We Offer:</h4>
-      <ul>
-        <li>Competitive compensation package.</li>
-        <li>Career growth opportunities.</li>
-        <li>Supportive and diverse work environment.</li>
-      </ul>
-
-      <div class="mt-4">
-        <a href="apply.html" class="btn">Apply Now</a>
-      </div>
-    </section>
 
     <!-- Scripts -->
     <script>
