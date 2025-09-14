@@ -17,10 +17,7 @@
       rel="stylesheet"
     />
 
-    <!-- Styles -->
     <link rel="stylesheet" href="styles.css" />
-
-    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/images/favicon.png" />
 
     <style>
@@ -47,17 +44,22 @@
         background: #fff;
       }
 
-      /* Navigation styles */
+      /* --- NAVBAR STYLES --- */
       nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 15px 30px;
-        position: absolute;
+        position: fixed;
         top: 0;
         left: 0;
         width: 100%;
-        z-index: 100;
+        padding: 15px 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 1000;
+        background: rgba(0, 0, 0, 0.6);
+      }
+
+      nav .nav__logo img {
+        height: 40px;
       }
 
       .nav__links {
@@ -74,13 +76,13 @@
 
       .nav__menu__btn {
         display: none;
-        font-size: 24px;
+        font-size: 26px;
         color: #fff;
         cursor: pointer;
       }
 
-      /* Mobile nav */
-      @media (max-width: 768px) {
+      /* Mobile & Landscape nav */
+      @media (max-width: 992px) {
         .nav__menu__btn {
           display: block;
         }
@@ -88,20 +90,25 @@
         .nav__links {
           display: none;
           flex-direction: column;
-          background: rgba(0, 0, 0, 0.9);
+          background: rgba(0, 0, 0, 0.95);
           position: absolute;
-          top: 60px;
+          top: 70px;
           right: 20px;
           padding: 20px;
           border-radius: 8px;
+          width: 200px;
         }
 
         .nav__links.active {
           display: flex;
         }
+
+        .nav__links li {
+          margin-bottom: 15px;
+        }
       }
 
-      /* Make table responsive */
+      /* Responsive table */
       @media (max-width: 768px) {
         .jobs-table-container {
           max-width: 100%;
@@ -127,15 +134,13 @@
     <!-- HEADER -->
     <header class="main">
       <nav>
-        <div class="nav__header">
-          <div class="nav__logo">
-            <a href="index.html">
-              <img src="assets/logo.png" alt="ND Western Logo" />
-            </a>
-          </div>
-          <div class="nav__menu__btn" id="menu-btn">
-            <i class="ri-menu-3-line"></i>
-          </div>
+        <div class="nav__logo">
+          <a href="index.html">
+            <img src="assets/logo.png" alt="ND Western Logo" />
+          </a>
+        </div>
+        <div class="nav__menu__btn" id="menu-btn">
+          <i class="ri-menu-3-line"></i>
         </div>
         <ul class="nav__links" id="nav-links">
           <li><a href="index.html">Home</a></li>
@@ -194,7 +199,7 @@
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Toggle Menu Script -->
+    <!-- Mobile Menu Toggle Script -->
     <script>
       const menuBtn = document.getElementById("menu-btn");
       const navLinks = document.getElementById("nav-links");
