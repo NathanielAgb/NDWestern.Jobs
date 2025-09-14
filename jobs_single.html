@@ -52,8 +52,8 @@
         background: #fff;
         color: #222;
         width: 100%;
-        max-width: 600px; /* slightly smaller */
-        max-height: 85vh; /* avoid scroll */
+        max-width: 600px; /* adjusted size */
+        max-height: 85vh; /* avoid scrolling */
         padding: 1.5rem;
         border-radius: 14px;
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
@@ -83,8 +83,15 @@
         line-height: 1.5;
       }
 
+      /* FIXED Bullet Styling */
       .job-card ul {
-        margin-left: 1.2rem;
+        margin-left: 1.5rem;
+        padding-left: 1rem;
+        list-style-type: disc; /* ensure bullets are visible */
+      }
+
+      .job-card li {
+        margin-bottom: 0.4rem;
       }
 
       .job-meta {
