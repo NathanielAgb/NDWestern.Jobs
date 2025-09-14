@@ -11,7 +11,7 @@
       rel="stylesheet"
     />
 
-    <!-- Bootstrap -->
+    <!-- Bootstrap for the table -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -26,7 +26,7 @@
       /* HERO background container */
       .header__container {
         background: url("assets/images/header.jpg") center/cover no-repeat;
-        min-height: 100vh;
+        height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -41,7 +41,6 @@
         padding: 25px 30px;
         border-radius: 12px;
         box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
-        overflow-x: auto; /* allows horizontal scroll on very small screens */
       }
 
       /* Heading container */
@@ -64,30 +63,28 @@
       }
 
       /* Table responsive tweaks */
-      table.table {
+      .jobs-table-container table {
         width: 100%;
-        min-width: 400px; /* prevent squishing */
+        table-layout: auto;
       }
 
       /* Mobile & Portrait optimization */
-      @media (max-width: 768px), (orientation: portrait) {
-        .header__container {
-          padding: 15px;
-        }
-
+      @media (max-width: 768px) {
         .jobs-table-container {
-          padding: 15px 10px;
+          padding: 20px 15px;
         }
 
         .jobs-table-header h2 {
-          font-size: 1.4rem;
+          font-size: 1.5rem;
         }
 
         .jobs-table-header p {
-          font-size: 0.9rem;
+          font-size: 0.95rem;
         }
 
-        .jobs-table-container table {
+        .jobs-table-container table,
+        .jobs-table-container th,
+        .jobs-table-container td {
           font-size: 0.85rem;
         }
 
@@ -100,25 +97,20 @@
           font-size: 11px;
           padding: 3px 6px;
         }
+      }
 
-        /* Stack table on very small screens */
-        .table-responsive {
-          overflow-x: auto;
+      @media (max-width: 480px) {
+        .jobs-table-header h2 {
+          font-size: 1.3rem;
         }
-      }
 
-      /* Nav tweaks for mobile */
-      nav ul {
-        display: flex;
-        flex-direction: row;
-        list-style: none;
-        padding-left: 0;
-      }
+        .jobs-table-header p {
+          font-size: 0.85rem;
+        }
 
-      @media (max-width: 768px) {
-        nav ul {
-          flex-direction: column;
-          gap: 10px;
+        .jobs-table-container .btn {
+          font-size: 10px;
+          padding: 2px 5px;
         }
       }
     </style>
@@ -146,7 +138,7 @@
 
       <!-- HERO (with floating jobs table) -->
       <div class="header__container">
-        <div class="jobs-table-container table-responsive">
+        <div class="jobs-table-container">
           <div class="jobs-table-header">
             <h2>Available Job Openings</h2>
             <p>Explore the latest career opportunities at ND Western</p>
