@@ -16,14 +16,7 @@
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/images/favicon.png" />
-
     <style>
-      body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background: #f5f5f5;
-      }
-
       /* Smooth transitions */
       .fly-in {
         animation: flyIn 1s forwards;
@@ -38,64 +31,6 @@
           opacity: 1;
           transform: translateY(0);
         }
-      }
-
-      /* HERO */
-      .hero {
-        position: relative;
-        height: 100vh;
-        background: url("assets/images/hero-bg.jpg") center/cover no-repeat;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        color: #fff;
-        padding: 2rem;
-      }
-
-      /* Floating Job Card */
-      .job-card {
-        background: #fff;
-        color: #333;
-        max-width: 700px;
-        width: 100%;
-        padding: 2rem;
-        border-radius: 12px;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-        text-align: left;
-      }
-
-      .job-card h2 {
-        margin-top: 0;
-        color: #ed1d24;
-      }
-
-      .job-meta {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1rem;
-        font-size: 0.9rem;
-        margin-bottom: 1rem;
-        color: #555;
-      }
-
-      .job-card ul {
-        margin: 0;
-        padding-left: 1.2rem;
-      }
-
-      .btn {
-        display: inline-block;
-        background: #ed1d24;
-        color: #fff;
-        padding: 0.8rem 1.5rem;
-        border-radius: 6px;
-        text-decoration: none;
-        transition: background 0.3s ease;
-      }
-
-      .btn:hover {
-        background: #b80314;
       }
     </style>
   </head>
@@ -119,62 +54,63 @@
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
-    </header>
 
-    <!-- HERO with Floating Job Card -->
-    <section class="hero">
-      <div class="job-card fly-in">
-        <h1>General Operator</h1>
-        <h2>Job Description</h2>
-        <div class="job-meta">
-          <span><i class="ri-map-pin-line"></i> Lagos</span>
-          <span><i class="ri-calendar-line"></i> Posted: Sept 1, 2025</span>
-          <span><i class="ri-briefcase-line"></i> Full-Time</span>
-        </div>
+      <!-- HERO / LANDING HEADER -->
+      <div class="header__container fly-in" id="hero-content">
+        <!-- Floating job card moved here -->
+        <div class="job-card">
+          <h1>General Operator</h1>
+          <h2>Job Description</h2>
+          <div class="job-meta">
+            <span><i class="ri-map-pin-line"></i> Location: Lagos</span>
+            <span><i class="ri-calendar-line"></i> Posted: Sept 1, 2025</span>
+            <span><i class="ri-briefcase-line"></i> Full-Time</span>
+          </div>
 
-        <p>
-          We are seeking motivated and detail-oriented General Operators to
-          join our production team. The ideal candidate will support daily
-          operations, ensuring efficiency, quality, and safety standards are
-          maintained.
-        </p>
+          <p>
+            We are seeking motivated and detail-oriented General Operators to
+            join our production team. The ideal candidate will support daily
+            operations, ensuring efficiency, quality, and safety standards are
+            maintained.
+          </p>
 
-        <h4>Your Role:</h4>
-        <ul>
-          <li>Operate production machinery and equipment.</li>
-          <li>Ensure product quality and consistency.</li>
-          <li>Maintain a safe and clean work environment.</li>
-          <li>Collaborate with supervisors and team members to meet targets.</li>
-        </ul>
+          <h4>Your Role:</h4>
+          <ul>
+            <li>Operate production machinery and equipment.</li>
+            <li>Ensure product quality and consistency.</li>
+            <li>Maintain a safe and clean work environment.</li>
+            <li>Collaborate with supervisors and team members to meet targets.</li>
+          </ul>
 
-        <h4>Requirements:</h4>
-        <ul>
-          <li>Minimum 3 years of relevant experience.</li>
-          <li>Strong attention to detail and problem-solving skills.</li>
-          <li>Ability to work in shifts and adapt to a fast-paced environment.</li>
-          <li>
-            Qualification: High School Diploma / Bachelor’s Degree preferred.
-          </li>
-        </ul>
+          <h4>Requirements:</h4>
+          <ul>
+            <li>Minimum 3 years of relevant experience.</li>
+            <li>Strong attention to detail and problem-solving skills.</li>
+            <li>Ability to work in shifts and adapt to a fast-paced environment.</li>
+            <li>
+              Qualification: High School Diploma / Bachelor’s Degree preferred.
+            </li>
+          </ul>
 
-        <h4>What We Offer:</h4>
-        <ul>
-          <li>Competitive compensation package.</li>
-          <li>Career growth opportunities.</li>
-          <li>Supportive and diverse work environment.</li>
-        </ul>
+          <h4>What We Offer:</h4>
+          <ul>
+            <li>Competitive compensation package.</li>
+            <li>Career growth opportunities.</li>
+            <li>Supportive and diverse work environment.</li>
+          </ul>
 
-        <div class="mt-4">
-          <a href="apply.html" class="btn">Apply Now</a>
+          <div class="mt-4">
+            <a href="apply.html" class="btn">Apply Now</a>
+          </div>
         </div>
       </div>
-    </section>
+    </header>
 
     <!-- Scripts -->
     <script>
       // Animate hero on load
       window.addEventListener("DOMContentLoaded", () => {
-        document.querySelector(".job-card").classList.add("fly-in");
+        document.getElementById("hero-content").classList.add("fly-in");
       });
     </script>
   </body>
