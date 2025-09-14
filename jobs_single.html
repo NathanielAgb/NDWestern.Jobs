@@ -32,6 +32,62 @@
           transform: translateY(0);
         }
       }
+
+      /* Landing page container */
+      .header__container {
+        position: relative;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: url("assets/images/hero-bg.jpg") center/cover no-repeat;
+        padding: 2rem;
+      }
+
+      /* Floating Job Card */
+      .job-card {
+        background: #fff;
+        color: #333;
+        max-width: 700px;
+        width: 100%;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        text-align: left;
+      }
+
+      .job-card h2 {
+        margin-top: 0;
+        color: #ed1d24;
+      }
+
+      .job-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+        color: #555;
+      }
+
+      .job-card ul {
+        margin: 0;
+        padding-left: 1.2rem;
+      }
+
+      .btn {
+        display: inline-block;
+        background: #ed1d24;
+        color: #fff;
+        padding: 0.8rem 1.5rem;
+        border-radius: 6px;
+        text-decoration: none;
+        transition: background 0.3s ease;
+      }
+
+      .btn:hover {
+        background: #b80314;
+      }
     </style>
   </head>
   <body>
@@ -55,9 +111,8 @@
         </ul>
       </nav>
 
-      <!-- HERO / LANDING HEADER -->
+      <!-- HERO / LANDING HEADER with Floating Job Card -->
       <div class="header__container fly-in" id="hero-content">
-        <!-- Floating job card moved here -->
         <div class="job-card">
           <h1>General Operator</h1>
           <h2>Job Description</h2>
