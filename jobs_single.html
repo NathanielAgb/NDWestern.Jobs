@@ -16,7 +16,6 @@
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/images/favicon.png" />
-
     <style>
       /* Smooth transitions */
       .fly-in {
@@ -34,21 +33,24 @@
         }
       }
 
-      /* Landing Page */
-      .header__container {
-        position: relative;
-        height: 100vh;
+      /* Hero Section */
+      .hero {
         display: flex;
-        align-items: center;
         justify-content: center;
-        background: url("assets/images/hero-bg.jpg") center/cover no-repeat;
-        padding: 1.5rem;
+        align-items: center;
+        height: 100vh;
+        background: linear-gradient(
+            rgba(0, 0, 0, 0.4),
+            rgba(0, 0, 0, 0.4)
+          ),
+          url("assets/images/hero-bg.jpg") center/cover no-repeat;
+        padding: 1rem;
       }
 
       /* Floating Job Card */
       .job-card {
         background: #fff;
-        color: #333;
+        color: #222; /* ensure text visible */
         width: 100%;
         max-width: 700px;
         max-height: 90vh;
@@ -56,23 +58,14 @@
         padding: 2rem;
         border-radius: 14px;
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+        text-align: left;
       }
 
       .job-card h1 {
-        margin: 0 0 0.5rem 0;
+        margin: 0 0 1rem 0;
         font-size: 2rem;
         color: #ed1d24;
         text-align: center;
-      }
-
-      .job-meta {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 1rem;
-        font-size: 0.9rem;
-        margin-bottom: 1.5rem;
-        color: #555;
       }
 
       .job-card h4 {
@@ -82,21 +75,31 @@
       }
 
       .job-card p,
-      .job-card ul {
+      .job-card ul,
+      .job-card li {
+        color: #333;
         font-size: 0.95rem;
         line-height: 1.6;
-        margin-bottom: 1rem;
       }
 
       .job-card ul {
-        padding-left: 1.2rem;
+        margin-left: 1.2rem;
+      }
+
+      .job-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        font-size: 0.9rem;
+        color: #555;
+        margin-bottom: 1rem;
       }
 
       .btn {
         display: inline-block;
+        padding: 0.6rem 1.2rem;
         background: #ed1d24;
         color: #fff;
-        padding: 0.6rem 1.2rem;
         border-radius: 6px;
         text-decoration: none;
         font-size: 0.9rem;
@@ -105,14 +108,6 @@
 
       .btn:hover {
         background: #b80314;
-      }
-
-      /* Make it scrollable but neat on small screens */
-      @media (max-width: 768px) {
-        .job-card {
-          max-width: 95%;
-          padding: 1.5rem;
-        }
       }
     </style>
   </head>
@@ -137,21 +132,22 @@
         </ul>
       </nav>
 
-      <!-- HERO / LANDING HEADER with Floating Job Card -->
-      <div class="header__container fly-in" id="hero-content">
-        <div class="job-card">
+      <!-- HERO with job card floating in center -->
+      <section class="hero">
+        <div class="job-card fly-in">
           <h1>General Operator</h1>
+
           <div class="job-meta">
             <span><i class="ri-map-pin-line"></i> Lagos</span>
-            <span><i class="ri-calendar-line"></i> Sept 1, 2025</span>
+            <span><i class="ri-calendar-line"></i> Posted: Sept 1, 2025</span>
             <span><i class="ri-briefcase-line"></i> Full-Time</span>
           </div>
 
           <p>
-            We are seeking motivated and detail-oriented General Operators to
-            join our production team. The ideal candidate will support daily
+            We are seeking motivated and detail-oriented <b>General Operators</b>
+            to join our production team. The ideal candidate will support daily
             operations, ensuring efficiency, quality, and safety standards are
-            maintained.
+            consistently maintained.
           </p>
 
           <h4>Your Role:</h4>
@@ -167,7 +163,9 @@
             <li>Minimum 3 years of relevant experience.</li>
             <li>Strong attention to detail and problem-solving skills.</li>
             <li>Ability to work in shifts and adapt to a fast-paced environment.</li>
-            <li>Qualification: High School Diploma / Bachelor’s Degree preferred.</li>
+            <li>
+              Qualification: High School Diploma / Bachelor’s Degree preferred.
+            </li>
           </ul>
 
           <h4>What We Offer:</h4>
@@ -177,18 +175,18 @@
             <li>Supportive and diverse work environment.</li>
           </ul>
 
-          <div class="mt-4" style="text-align:center;">
+          <div class="mt-4" style="text-align: center; margin-top: 1rem;">
             <a href="apply.html" class="btn">Apply Now</a>
           </div>
         </div>
-      </div>
+      </section>
     </header>
 
     <!-- Scripts -->
     <script>
       // Animate hero on load
       window.addEventListener("DOMContentLoaded", () => {
-        document.getElementById("hero-content").classList.add("fly-in");
+        document.querySelector(".job-card").classList.add("fly-in");
       });
     </script>
   </body>
