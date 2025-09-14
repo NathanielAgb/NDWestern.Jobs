@@ -20,6 +20,7 @@
     <style>
       body {
         font-family: Arial, sans-serif;
+        background: #f7f7f7;
       }
 
       /* Navbar */
@@ -50,7 +51,7 @@
         font-weight: 500;
       }
 
-      /* Hero section */
+      /* Hero background */
       .hero {
         background: url("assets/images/header.jpg") center/cover no-repeat;
         min-height: 45vh;
@@ -58,8 +59,6 @@
         align-items: center;
         justify-content: center;
         text-align: center;
-        color: #fff;
-        padding: 80px 20px 40px;
         position: relative;
       }
       .hero::after {
@@ -68,19 +67,12 @@
         inset: 0;
         background: rgba(0, 0, 0, 0.55);
       }
-      .hero h1 {
-        position: relative;
-        z-index: 1;
-        font-size: 2.5rem;
-        font-weight: bold;
-        animation: flyIn 1s ease forwards;
-      }
 
-      /* Smooth transitions (uniform with careers page) */
+      /* Fly-in animation */
       @keyframes flyIn {
         from {
           opacity: 0;
-          transform: translateY(40px);
+          transform: translateY(60px);
         }
         to {
           opacity: 1;
@@ -95,9 +87,10 @@
         border-radius: 12px;
         box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
         max-width: 900px;
-        margin: -60px auto 40px; /* overlaps hero for floating effect */
+        margin: -60px auto 40px;
         position: relative;
         z-index: 2;
+        opacity: 0;
         animation: flyIn 1.2s ease forwards;
       }
       .job-details h2 {
@@ -130,9 +123,6 @@
           flex-direction: column;
           align-items: center;
         }
-        .hero h1 {
-          font-size: 1.8rem;
-        }
         .job-details {
           padding: 25px 20px;
           margin: -40px 10px 30px;
@@ -155,14 +145,12 @@
       </ul>
     </nav>
 
-    <!-- Hero -->
-    <section class="hero">
-      <h1>General Operator</h1>
-    </section>
+    <!-- Hero Background -->
+    <section class="hero"></section>
 
     <!-- Job Details Card -->
     <section class="job-details">
-      <h2>Job Description</h2>
+      <h2>General Operator</h2>
       <div class="job-meta">
         <span><i class="ri-map-pin-line"></i> Location: Lagos</span>
         <span><i class="ri-calendar-line"></i> Posted: Sept 1, 2025</span>
