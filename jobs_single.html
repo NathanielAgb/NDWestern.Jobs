@@ -21,6 +21,8 @@
       body {
         font-family: Arial, sans-serif;
       }
+
+      /* Navbar */
       nav {
         position: fixed;
         top: 0;
@@ -47,9 +49,11 @@
         text-decoration: none;
         font-weight: 500;
       }
+
+      /* Hero section */
       .hero {
         background: url("assets/images/header.jpg") center/cover no-repeat;
-        min-height: 40vh;
+        min-height: 45vh;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -67,13 +71,34 @@
       .hero h1 {
         position: relative;
         z-index: 1;
-        font-size: 2rem;
+        font-size: 2.5rem;
         font-weight: bold;
+        animation: flyIn 1s ease forwards;
       }
+
+      /* Smooth transitions (uniform with careers page) */
+      @keyframes flyIn {
+        from {
+          opacity: 0;
+          transform: translateY(40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Job details card */
       .job-details {
-        padding: 40px 20px;
+        background: #fff;
+        padding: 40px 30px;
+        border-radius: 12px;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
         max-width: 900px;
-        margin: auto;
+        margin: -60px auto 40px; /* overlaps hero for floating effect */
+        position: relative;
+        z-index: 2;
+        animation: flyIn 1.2s ease forwards;
       }
       .job-details h2 {
         margin-bottom: 15px;
@@ -87,12 +112,15 @@
         display: inline-block;
         margin-right: 20px;
       }
+
       footer {
         background: #111;
         color: #fff;
         text-align: center;
         padding: 20px;
       }
+
+      /* Responsive nav + layout */
       @media (max-width: 576px) {
         nav {
           flex-direction: column;
@@ -101,6 +129,13 @@
         .nav__links {
           flex-direction: column;
           align-items: center;
+        }
+        .hero h1 {
+          font-size: 1.8rem;
+        }
+        .job-details {
+          padding: 25px 20px;
+          margin: -40px 10px 30px;
         }
       }
     </style>
@@ -125,7 +160,7 @@
       <h1>General Operator</h1>
     </section>
 
-    <!-- Job Details -->
+    <!-- Job Details Card -->
     <section class="job-details">
       <h2>Job Description</h2>
       <div class="job-meta">
