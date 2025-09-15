@@ -30,69 +30,139 @@
       }
 
       @keyframes flyOut {
-        from {
-          opacity: 1;
-          transform: translateY(0);
-        }
-        to {
-          opacity: 0;
-          transform: translateY(-50px);
-        }
+        from { opacity: 1; transform: translateY(0); }
+        to { opacity: 0; transform: translateY(-50px); }
       }
       @keyframes flyIn {
-        from {
-          opacity: 0;
-          transform: translateY(50px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
+        from { opacity: 0; transform: translateY(50px); }
+        to { opacity: 1; transform: translateY(0); }
       }
 
-      /* Cards layout */
+      /* NAVIGATION */
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        background: #fff;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      }
+      .nav__logo img { height: 50px; }
+      .nav__links {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+      }
+      .nav__links li a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+      }
+      .nav__menu__btn {
+        display: none;
+        font-size: 1.8rem;
+        cursor: pointer;
+      }
+
+      /* HERO / HEADER */
+      .header__container {
+        padding: 60px 20px;
+        text-align: center;
+      }
+      .header__container h1 span {
+        display: block;
+        font-size: 2.5rem;
+      }
+      .header__container p {
+        font-size: 1rem;
+        margin: 20px auto;
+        max-width: 600px;
+      }
+      .header__btn .btn {
+        padding: 12px 24px;
+        font-size: 1rem;
+        cursor: pointer;
+        border: none;
+        border-radius: 6px;
+        background-color: #ed1d24;
+        color: #fff;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      /* OPENINGS CARDS */
       .openings__grid {
         display: none;
-        margin-top: 80px; /* space from header */
-        gap: 40px;
+        margin: 40px auto;
+        gap: 20px;
         justify-content: center;
-        flex-wrap: wrap; /* allow wrap on smaller screens */
+        flex-wrap: wrap;
       }
       .openings__card {
         background: #fff;
         border-radius: 12px;
-        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+        box-shadow: 0 6px 18px rgba(0,0,0,0.15);
         overflow: hidden;
         text-decoration: none;
         color: inherit;
-        width: 340px; /* slightly wider */
+        width: 300px;
         transition: all 0.4s ease;
         display: flex;
         flex-direction: column;
         align-items: center;
-        text-align: left; /* align left for text */
+        text-align: center;
         padding-bottom: 20px;
       }
       .openings__card:hover {
         transform: translateY(-10px);
-        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 10px 24px rgba(0,0,0,0.2);
       }
       .openings__card img {
         width: 100%;
-        height: 200px;
+        height: 180px;
         object-fit: cover;
       }
       .openings__card h3 {
-        font-size: 1.4rem;
+        font-size: 1.3rem;
         margin: 15px 0 10px;
-        font-weight: bold;
-        text-align: center;
       }
       .openings__card p {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
         color: #333;
         margin: 0 15px 10px;
-        text-align: center;
+      }
+
+      /* MOBILE RESPONSIVE */
+      @media screen and (max-width: 768px) {
+        .nav__links {
+          position: fixed;
+          top: 70px;
+          right: -100%;
+          flex-direction: column;
+          background: #fff;
+          width: 200px;
+          height: calc(100% - 70px);
+          padding-top: 20px;
+          gap: 15px;
+          box-shadow: -2px 0 6px rgba(0,0,0,0.1);
+          transition: right 0.3s ease;
+        }
+        .nav__links.active {
+          right: 0;
+        }
+        .nav__menu__btn {
+          display: block;
+        }
+        .header__container h1 span {
+          font-size: 2rem;
+        }
+        .header__container p {
+          font-size: 0.95rem;
+        }
+        .openings__card {
+          width: 90%;
+        }
       }
     </style>
   </head>
@@ -132,13 +202,10 @@
             <i class="ri-arrow-right-long-line"></i>
           </button>
         </div>
-        <ul class="socials">
-        </ul>
       </div>
 
-      <!-- OPENINGS CARDS (hidden by default) -->
+      <!-- OPENINGS CARDS -->
       <div class="openings__grid container" id="openings-cards">
-        <!-- Internal Openings -->
         <a href="jobs.html" class="openings__card fly-in">
           <img src="assets/images/header-banner-1.jpg" alt="Internal Openings" />
           <div class="p-4">
@@ -146,8 +213,6 @@
             <p>Grow your career within ND Western. Explore current internal opportunities and staff mobility options.</p>
           </div>
         </a>
-
-        <!-- Employee Referral Program -->
         <a href="employee-referral.html" class="openings__card fly-in">
           <img src="assets/images/header-banner.jpg" alt="Employee Referral Program" />
           <div class="p-4">
@@ -158,7 +223,7 @@
       </div>
     </header>
 
-    <!-- Scripts -->
+    <!-- SCRIPTS -->
     <script src="https://unpkg.com/scrollreveal"></script>
     <script>
       const viewBtn = document.getElementById("view-openings");
@@ -181,6 +246,13 @@
           openingsCards.style.display = "flex";
           openingsCards.classList.add("fly-in");
         }, 1000);
+      });
+
+      // MOBILE MENU TOGGLE
+      const menuBtn = document.getElementById("menu-btn");
+      const navLinks = document.getElementById("nav-links");
+      menuBtn.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
       });
     </script>
   </body>
