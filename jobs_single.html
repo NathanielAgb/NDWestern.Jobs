@@ -191,6 +191,34 @@
     </header>
 
     <!-- Scripts -->
+     <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="main.js"></script>
+<script>
+const viewBtn = document.getElementById("view-openings");
+      const heroContent = document.getElementById("hero-content");
+      const openingsCards = document.getElementById("openings-cards");
+
+      // Animate hero on page load
+      window.addEventListener("DOMContentLoaded", () => {
+        heroContent.style.display = "block";
+        heroContent.classList.add("fly-in");
+      });
+
+      // Handle hero -> openings transition
+      viewBtn.addEventListener("click", () => {
+        heroContent.classList.remove("fly-in"); // reset in case it's there
+        heroContent.classList.add("fly-out");
+
+        setTimeout(() => {
+          heroContent.style.display = "none";
+          openingsCards.style.display = "flex";
+          openingsCards.classList.add("fly-in");
+        }, 1000); // Wait for fly-out to finish
+      });
+
+     
+    </script>
+    <!-- Scripts -->
     <script>
       window.addEventListener("DOMContentLoaded", () => {
         document.querySelector(".job-card").classList.add("fly-in");
