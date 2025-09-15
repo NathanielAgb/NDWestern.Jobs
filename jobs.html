@@ -103,7 +103,7 @@
         <div class="nav__header">
           <div class="nav__logo">
             <a href="index.html">
-              <img src="assets/logo.png" alt="ND Western Logo" />
+              <img src="assets/logo.png" alt="Logo" />
             </a>
           </div>
           <div class="nav__menu__btn" id="menu-btn">
@@ -115,8 +115,7 @@
           
         </ul>
       </nav>
- <!-- HERO / LANDING HEADER -->
-      <div class="header__container" id="hero-content">
+ 
  <!-- HERO / LANDING HEADER -->
       <div class="header__container" id="hero-content">
       <!-- HERO (with floating jobs table) -->
@@ -171,6 +170,35 @@
         </div>
       </div>
     </header>
+
+    <!-- Scripts -->
+     <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="main.js"></script>
+<script>
+const viewBtn = document.getElementById("view-openings");
+      const heroContent = document.getElementById("hero-content");
+      const openingsCards = document.getElementById("openings-cards");
+
+      // Animate hero on page load
+      window.addEventListener("DOMContentLoaded", () => {
+        heroContent.style.display = "block";
+        heroContent.classList.add("fly-in");
+      });
+
+      // Handle hero -> openings transition
+      viewBtn.addEventListener("click", () => {
+        heroContent.classList.remove("fly-in"); // reset in case it's there
+        heroContent.classList.add("fly-out");
+
+        setTimeout(() => {
+          heroContent.style.display = "none";
+          openingsCards.style.display = "flex";
+          openingsCards.classList.add("fly-in");
+        }, 1000); // Wait for fly-out to finish
+      });
+
+     
+    </script>
 
     <!-- Bootstrap JS -->
     <script
