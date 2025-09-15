@@ -4,18 +4,21 @@ const navLinks = document.getElementById("nav-links");
 const menuBtnIcon = menuBtn.querySelector("i");
 
 menuBtn.addEventListener("click", () => {
-  navLinks.classList.toggle("open");
+  navLinks.classList.toggle("active"); // changed from "open" to "active"
 
-  const isOpen = navLinks.classList.contains("open");
+  const isOpen = navLinks.classList.contains("active");
   menuBtnIcon.setAttribute(
     "class",
     isOpen ? "ri-close-line" : "ri-menu-3-line"
   );
 });
 
-navLinks.addEventListener("click", () => {
-  navLinks.classList.remove("open");
-  menuBtnIcon.setAttribute("class", "ri-menu-3-line");
+// Close menu when clicking on a link
+navLinks.addEventListener("click", (e) => {
+  if (e.target.tagName === "A") {
+    navLinks.classList.remove("active");
+    menuBtnIcon.setAttribute("class", "ri-menu-3-line");
+  }
 });
 
 // ===== SCROLL REVEAL BASE OPTIONS =====
@@ -46,7 +49,7 @@ ScrollReveal().reveal(".header__container .header__btn", {
   ...baseOption,
   origin: "bottom",
   delay: 2000,
-  scale: 0.85, // pop effect
+  scale: 0.85,
 });
 
 // Social icons fade up one by one
