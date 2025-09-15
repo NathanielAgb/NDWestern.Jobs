@@ -3,7 +3,7 @@
 :root {
   --primary-color: #ed1d24;
   --primary-color-dark: #b80314;
-  --white: #ffffff;
+  --white: #ffffff; 
   --max-width: 1200px;
 }
 
@@ -240,3 +240,4 @@ button:hover {
     line-height: 9rem;
   }
 }
+
