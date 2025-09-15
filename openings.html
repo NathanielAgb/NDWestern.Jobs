@@ -1,225 +1,169 @@
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ND Western | Careers</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ND Western | Careers</title>
 
-  <!-- Remixicon -->
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet" />
-  <!-- Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <!-- Styles -->
-  <link rel="stylesheet" href="styles.css" />
-  <style>
-    /* HERO */
-    header.main {
-      background: url("assets/images/header-banner.jpg") center/cover no-repeat;
-      min-height: 100vh;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      color: white;
-    }
-    header.main::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.55);
-    }
-    .header__container {
-      position: relative;
-      z-index: 2;
-      max-width: 800px;
-      margin: auto;
-      padding: 2rem;
-    }
-    .header__container h1 span:first-child {
-      display: block;
-      font-size: 3rem;
-      font-weight: 700;
-    }
-    .header__container h1 span:last-child {
-      display: block;
-      font-size: 2.2rem;
-      font-weight: 500;
-    }
-    .header__btn button {
-      margin-top: 20px;
-    }
-    .socials {
-      margin-top: 30px;
-      list-style: none;
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      padding: 0;
-    }
-    .socials a {
-      color: white;
-      font-size: 1.5rem;
-    }
+    <!-- Remixicon -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
 
-    /* CARDS SECTION */
-    .openings__grid {
-      margin-top: -60px; /* float up */
-      padding: 60px 0;
-    }
-    .openings__card {
-      background: #fff;
-      border-radius: 14px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.15);
-      transition: all 0.4s ease;
-      overflow: hidden;
-      color: inherit;
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-    }
-    .openings__card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 10px 24px rgba(0,0,0,0.2);
-    }
-    .openings__card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
-    .openings__card h3 {
-      font-size: 1.4rem;
-      margin: 12px 0;
-    }
-    .openings__card p {
-      font-size: 0.95rem;
-      color: #444;
-    }
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css" />
 
-    /* Bullet styling */
-    .openings__card ul {
-      text-align: left;
-      margin: 1rem auto;
-      padding-left: 1.2rem;
-      list-style-type: disc;
-    }
-    .openings__card li {
-      margin-bottom: 0.5rem;
-      font-size: 0.9rem;
-      color: #333;
-    }
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.png" />
+    <style>
+      /* Smooth transitions */
+      .hidden {
+        display: none;
+      }
 
-    .openings__card .btn {
-      margin-top: 12px;
-      padding: 6px 16px;
-      font-size: 0.9rem;
-      border-radius: 6px;
-    }
-  </style>
-</head>
-<body>
-  <!-- HEADER -->
-  <header class="main">
-    <nav class="navbar navbar-expand-lg navbar-light bg-transparent position-absolute w-100">
-      <div class="container">
-        <a href="#" class="navbar-brand">
-          <img src="assets/logo.png" alt="ND Western Logo" height="40" />
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item"><a href="#hero" class="nav-link text-white">Home</a></li>
-            <li class="nav-item"><a href="#openings" class="nav-link text-white">Openings</a></li>
-            <li class="nav-item"><a href="#about" class="nav-link text-white">About</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+      .fly-out {
+        animation: flyOut 1s forwards;
+      }
+      .fly-in {
+        animation: flyIn 1s forwards;
+      }
 
-    <div class="header__container" id="hero">
-      <h1><span>ND</span><span>Western Careers</span></h1>
-      <p>
-        Explore exciting opportunities with ND Western. Join a trusted team driving
-        innovation, growth, and success across the energy industry.
-      </p>
-      <div class="header__btn">
-        <a href="#openings">
-          <button class="btn btn-primary">
-            View Openings <i class="ri-arrow-right-long-line"></i>
-          </button>
-        </a>
-      </div>
-      <ul class="socials">
-        <li><a href="#"><i class="ri-facebook-fill"></i></a></li>
-        <li><a href="#"><i class="ri-twitter-fill"></i></a></li>
-        <li><a href="#"><i class="ri-linkedin-fill"></i></a></li>
-        <li><a href="#"><i class="ri-instagram-line"></i></a></li>
-      </ul>
-    </div>
-  </header>
+      @keyframes flyOut {
+        from {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        to {
+          opacity: 0;
+          transform: translateY(-50px);
+        }
+      }
+      @keyframes flyIn {
+        from {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
 
-  <!-- OPENINGS SECTION -->
-  <section id="openings" class="container openings__grid">
-    <div class="row justify-content-center g-4">
-      <!-- Internal -->
-      <div class="col-md-6">
-        <div class="openings__card p-3 text-center">
-          <img src="assets/images/header-banner-1.jpg" alt="Internal Openings" />
-          <div class="p-3">
-            <h3>Internal Openings</h3>
-            <p>We are seeking motivated professionals to fill key internal roles.</p>
-            <h5>Your Role:</h5>
-            <ul>
-              <li>Support ongoing operations and strategic projects.</li>
-              <li>Work with cross-functional teams to meet goals.</li>
-              <li>Ensure quality, safety, and compliance standards.</li>
-            </ul>
-            <a href="jobs.html" class="btn btn-primary">Apply Now</a>
+      /* Cards layout */
+      .openings__grid {
+        display: none;
+        margin-top: 80px; /* space from header */
+        gap: 40px;
+        justify-content: center;
+        flex-wrap: wrap; /* allow wrap on smaller screens */
+      }
+      .openings__card {
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+        overflow: hidden;
+        text-decoration: none;
+        color: inherit;
+        width: 340px; /* slightly wider */
+        transition: all 0.4s ease;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: left; /* align left for text */
+        padding-bottom: 20px;
+      }
+      .openings__card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+      }
+      .openings__card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+      .openings__card h3 {
+        font-size: 1.4rem;
+        margin: 15px 0 10px;
+        font-weight: bold;
+        text-align: center;
+      }
+      .openings__card p {
+        font-size: 0.95rem;
+        color: #333;
+        margin: 0 15px 10px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- HEADER -->
+   <header class="main">
+      <nav>
+        <div class="nav__header">
+          <div class="nav__logo">
+            <a href="index.html">
+              <img src="assets/logo.png" alt="logo" />
+            </a>
+          </div>
+          <div class="nav__menu__btn" id="menu-btn">
+            <i class="ri-menu-3-line"></i>
           </div>
         </div>
+        <ul class="nav__links" id="nav-links">
+          <li> <a href="index.html">Home</a> </li>
+         
+        </ul>
+      </nav>
+
+
+      <!-- HERO / LANDING HEADER -->
+      <div class="header__container" id="hero-content">
+        <h1>
+          <span></span>
+          <span></span>
+        </h1>
+        <p>
+         This page is currently under construction. Content will be available soon.
+        </p>
+        <div class="header__btn">
+         
+        <ul class="socials">
+          
+        </ul>
       </div>
 
-      <!-- Referrals -->
-      <div class="col-md-6">
-        <div class="openings__card p-3 text-center">
-          <img src="assets/images/header-banner.jpg" alt="Graduate Program" />
-          <div class="p-3">
-            <h3>Referrals & Graduate Program</h3>
-            <p>Join our internship and graduate programs to kickstart your career.</p>
-            <h5>Program Highlights:</h5>
-            <ul>
-              <li>Hands-on training and mentorship.</li>
-              <li>Career growth and networking opportunities.</li>
-              <li>Exposure to the energy industry.</li>
-            </ul>
-            <a href="internships.html" class="btn btn-primary">Apply Now</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+      
+    </header>
 
-  <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://unpkg.com/scrollreveal"></script>
-  <script>
-    const baseOption = {
-      distance: "80px",
-      duration: 1500,
-      opacity: 0,
-      easing: "ease-in-out",
-    };
+    <!-- Scripts -->
+     <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="main.js"></script>
+<script>
+const viewBtn = document.getElementById("view-openings");
+      const heroContent = document.getElementById("hero-content");
+      const openingsCards = document.getElementById("openings-cards");
 
-    // Hero animations
-    ScrollReveal().reveal(".header__container h1", { ...baseOption, origin: "left", delay: 300 });
-    ScrollReveal().reveal(".header__container p", { ...baseOption, origin: "right", delay: 800 });
-    ScrollReveal().reveal(".header__btn", { ...baseOption, origin: "bottom", delay: 1300, scale: 0.9 });
-    ScrollReveal().reveal(".socials li", { ...baseOption, origin: "bottom", delay: 1700, interval: 200 });
+      // Animate hero on page load
+      window.addEventListener("DOMContentLoaded", () => {
+        heroContent.style.display = "block";
+        heroContent.classList.add("fly-in");
+      });
 
-    // Cards animations
-    ScrollReveal().reveal(".openings__card", { ...baseOption, origin: "bottom", delay: 300, interval: 400 });
-  </script>
-</body>
-</html>
+      // Handle hero -> openings transition
+      viewBtn.addEventListener("click", () => {
+        heroContent.classList.remove("fly-in"); // reset in case it's there
+        heroContent.classList.add("fly-out");
+
+        setTimeout(() => {
+          heroContent.style.display = "none";
+          openingsCards.style.display = "flex";
+          openingsCards.classList.add("fly-in");
+        }, 1000); // Wait for fly-out to finish
+      });
+
+     
+    </script>
+  </body>
+</html> 
