@@ -1,3 +1,5 @@
+
+
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 
 :root {
@@ -240,21 +242,3 @@ button:hover {
     line-height: 9rem;
   }
 }
-
-/* Mobile header banner in ND Western green */
-@media (max-width: 768px) {
-  .nav__header {
-    background-color: #92D050;
-  }
-  .nav__links {
-    background-color: #92D050;
-  }
-  button {
-    background-color: #92D050;
-  }
-  button:hover {
-    background-color: #6aa63b; /* Slightly darker green on hover */
-  }
-}
-
-
