@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -16,41 +17,7 @@
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/images/favicon.png" />
-
     <style>
-      /* Preloader overlay */
-      #preloader {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: #0c0c0c; /* dark overlay */
-        color: #fff;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 2rem;
-        z-index: 9999;
-        flex-direction: column;
-      }
-
-      /* Simple spinner */
-      #preloader .spinner {
-        border: 6px solid rgba(255, 255, 255, 0.3);
-        border-top: 6px solid #ffffff;
-        border-radius: 50%;
-        width: 60px;
-        height: 60px;
-        animation: spin 1s linear infinite;
-        margin-bottom: 20px;
-      }
-
-      @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-      }
-
       /* Smooth transitions */
       .hidden {
         display: none;
@@ -64,21 +31,33 @@
       }
 
       @keyframes flyOut {
-        from { opacity: 1; transform: translateY(0); }
-        to { opacity: 0; transform: translateY(-50px); }
+        from {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        to {
+          opacity: 0;
+          transform: translateY(-50px);
+        }
       }
       @keyframes flyIn {
-        from { opacity: 0; transform: translateY(50px); }
-        to { opacity: 1; transform: translateY(0); }
+        from {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
 
       /* Cards layout */
       .openings__grid {
         display: none;
-        margin-top: 80px;
+        margin-top: 80px; /* space from header */
         gap: 40px;
         justify-content: center;
-        flex-wrap: wrap;
+        flex-wrap: wrap; /* allow wrap on smaller screens */
       }
       .openings__card {
         background: #fff;
@@ -87,12 +66,12 @@
         overflow: hidden;
         text-decoration: none;
         color: inherit;
-        width: 340px;
+        width: 340px; /* slightly wider */
         transition: all 0.4s ease;
         display: flex;
         flex-direction: column;
         align-items: center;
-        text-align: left;
+        text-align: left; /* align left for text */
         padding-bottom: 20px;
       }
       .openings__card:hover {
@@ -118,16 +97,9 @@
       }
     </style>
   </head>
-
   <body>
-    <!-- Preloader -->
-    <div id="preloader">
-      <div class="spinner"></div>
-      Loading, please wait...
-    </div>
-
     <!-- HEADER -->
-    <header class="main" style="display:none;" id="main-content">
+   <header class="main">
       <nav>
         <div class="nav__header">
           <div class="nav__logo">
@@ -141,10 +113,12 @@
         </div>
         <ul class="nav__links" id="nav-links">
           <li> <a href="index.html">Home</a> </li>
+         
         </ul>
       </nav>
 
-      <!-- HERO -->
+
+      <!-- HERO / LANDING HEADER -->
       <div class="header__container" id="hero-content">
         <h1>
           <span>ND</span>
@@ -161,11 +135,14 @@
             <i class="ri-arrow-right-long-line"></i>
           </button>
         </div>
-        <ul class="socials"></ul>
+        <ul class="socials">
+          
+        </ul>
       </div>
 
-      <!-- OPENINGS CARDS -->
+      <!-- OPENINGS CARDS (hidden by default) -->
       <div class="openings__grid container" id="openings-cards">
+        <!-- Internal Openings -->
         <a href="jobs.html" class="openings__card fly-in">
           <img src="assets/images/header-banner-1.jpg" alt="Internal Openings" />
           <div class="p-4">
@@ -174,6 +151,7 @@
           </div>
         </a>
 
+        <!-- Employee Referral Program -->
         <a href="Referral.html" class="openings__card fly-in">
           <img src="assets/images/header-banner.jpg" alt="Employee Referral Program" />
           <div class="p-4">
@@ -185,38 +163,32 @@
     </header>
 
     <!-- Scripts -->
-    <script src="https://unpkg.com/scrollreveal"></script>
+     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="main.js"></script>
-    <script>
-      const viewBtn = document.getElementById("view-openings");
+<script>
+const viewBtn = document.getElementById("view-openings");
       const heroContent = document.getElementById("hero-content");
       const openingsCards = document.getElementById("openings-cards");
-      const preloader = document.getElementById("preloader");
-      const mainContent = document.getElementById("main-content");
 
-      // Preloader: show until background image is loaded
-      window.addEventListener("load", () => {
-        // Optional: delay to ensure image loaded fully
-        setTimeout(() => {
-          preloader.style.display = "none";
-          mainContent.style.display = "block";
-
-          // Animate hero
-          heroContent.classList.add("fly-in");
-        }, 500); // adjust delay if needed
+      // Animate hero on page load
+      window.addEventListener("DOMContentLoaded", () => {
+        heroContent.style.display = "block";
+        heroContent.classList.add("fly-in");
       });
 
       // Handle hero -> openings transition
       viewBtn.addEventListener("click", () => {
-        heroContent.classList.remove("fly-in");
+        heroContent.classList.remove("fly-in"); // reset in case it's there
         heroContent.classList.add("fly-out");
 
         setTimeout(() => {
           heroContent.style.display = "none";
           openingsCards.style.display = "flex";
           openingsCards.classList.add("fly-in");
-        }, 1000);
+        }, 1000); // Wait for fly-out to finish
       });
+
+     
     </script>
   </body>
-</html>
+</html> 
