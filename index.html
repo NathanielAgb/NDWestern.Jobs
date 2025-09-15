@@ -53,10 +53,9 @@
       /* Cards layout */
       .openings__grid {
         display: none;
-        margin-top: 80px; /* space from header */
-        gap: 40px;
+        margin-top: 50px;
+        gap: 30px;
         justify-content: center;
-        flex-wrap: wrap; /* allow wrap on smaller screens */
       }
       .openings__card {
         background: #fff;
@@ -65,13 +64,8 @@
         overflow: hidden;
         text-decoration: none;
         color: inherit;
-        width: 340px; /* slightly wider */
+        width: 300px;
         transition: all 0.4s ease;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: left; /* align left for text */
-        padding-bottom: 20px;
       }
       .openings__card:hover {
         transform: translateY(-10px);
@@ -83,16 +77,13 @@
         object-fit: cover;
       }
       .openings__card h3 {
-        font-size: 1.4rem;
-        margin: 15px 0 10px;
-        font-weight: bold;
-        text-align: center;
+        font-size: 1.5rem;
+        margin-top: 15px;
       }
       .openings__card p {
         font-size: 0.95rem;
-        color: #333;
-        margin: 0 15px 10px;
-        text-align: center;
+        color: #555;
+        padding-bottom: 15px;
       }
     </style>
   </head>
@@ -102,8 +93,8 @@
       <nav>
         <div class="nav__header">
           <div class="nav__logo">
-            <a href="#">
-              <img src="assets/logo.png" alt="logo" />
+            <a href="index.html">
+              <img src="assets/logo.png" alt="ND Western Logo" />
             </a>
           </div>
           <div class="nav__menu__btn" id="menu-btn">
@@ -111,7 +102,8 @@
           </div>
         </div>
         <ul class="nav__links" id="nav-links">
-          <li><a href="#">Home</a></li>
+          <li><a href="index.html">Home</a></li>
+        
         </ul>
       </nav>
 
@@ -132,26 +124,27 @@
             <i class="ri-arrow-right-long-line"></i>
           </button>
         </div>
-        <ul class="socials"></ul>
+        <ul class="socials">
+         
+        </ul>
       </div>
 
       <!-- OPENINGS CARDS (hidden by default) -->
       <div class="openings__grid container" id="openings-cards">
-        <!-- Internal Openings -->
-        <a href="jobs.html" class="openings__card fly-in">
+        <!-- Internal -->
+        <a href="jobs.html" class="openings__card">
           <img src="assets/images/header-banner-1.jpg" alt="Internal Openings" />
-          <div class="p-4">
+          <div class="p-4 text-center">
             <h3>Internal Openings</h3>
-            <p>Grow your career within ND Western. Explore current internal opportunities and staff mobility options.</p>
+            <p>View all current internal career opportunities at ND Western.</p>
           </div>
         </a>
-
-        <!-- Employee Referral Program -->
-        <a href="employee-referral.html" class="openings__card fly-in">
-          <img src="assets/images/header-banner.jpg" alt="Employee Referral Program" />
-          <div class="p-4">
-            <h3>Employee Referral Program</h3>
-            <p>ND Western staff can recommend qualified professionals from outside the organization, helping attract top talent and strengthen our workforce.</p>
+        <!-- Referrals -->
+        <a href="internships.html" class="openings__card">
+          <img src="assets/images/header-banner.jpg" alt="Graduate Program" />
+          <div class="p-4 text-center">
+            <h3>Referrals & Graduate Program</h3>
+            <p>Explore internships and referral opportunities to grow with us.</p>
           </div>
         </a>
       </div>
@@ -159,14 +152,27 @@
 
     <!-- Scripts -->
     <script src="https://unpkg.com/scrollreveal"></script>
-    <script src="main.js"></script>
-
     <script>
-      // Fix the View Openings button
-      document.getElementById('view-openings').addEventListener('click', function() {
-        const openings = document.getElementById('openings-cards');
-        openings.style.display = 'flex'; // show the hidden grid
-        openings.scrollIntoView({ behavior: 'smooth' }); // scroll to it
+      const viewBtn = document.getElementById("view-openings");
+      const heroContent = document.getElementById("hero-content");
+      const openingsCards = document.getElementById("openings-cards");
+
+      // Animate hero on page load
+      window.addEventListener("DOMContentLoaded", () => {
+        heroContent.style.display = "block";
+        heroContent.classList.add("fly-in");
+      });
+
+      // Handle hero -> openings transition
+      viewBtn.addEventListener("click", () => {
+        heroContent.classList.remove("fly-in"); // reset in case it's there
+        heroContent.classList.add("fly-out");
+
+        setTimeout(() => {
+          heroContent.style.display = "none";
+          openingsCards.style.display = "flex";
+          openingsCards.classList.add("fly-in");
+        }, 1000); // Wait for fly-out to finish
       });
     </script>
   </body>
