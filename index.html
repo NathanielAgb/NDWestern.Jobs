@@ -1,8 +1,10 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ND Western | Careers</title>
 
     <!-- Remixicon -->
@@ -30,139 +32,69 @@
       }
 
       @keyframes flyOut {
-        from { opacity: 1; transform: translateY(0); }
-        to { opacity: 0; transform: translateY(-50px); }
+        from {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        to {
+          opacity: 0;
+          transform: translateY(-50px);
+        }
       }
       @keyframes flyIn {
-        from { opacity: 0; transform: translateY(50px); }
-        to { opacity: 1; transform: translateY(0); }
+        from {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
 
-      /* NAVIGATION */
-      nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px 20px;
-        background: #fff;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      }
-      .nav__logo img { height: 50px; }
-      .nav__links {
-        list-style: none;
-        display: flex;
-        gap: 20px;
-      }
-      .nav__links li a {
-        text-decoration: none;
-        color: #333;
-        font-weight: 500;
-      }
-      .nav__menu__btn {
-        display: none;
-        font-size: 1.8rem;
-        cursor: pointer;
-      }
-
-      /* HERO / HEADER */
-      .header__container {
-        padding: 60px 20px;
-        text-align: center;
-      }
-      .header__container h1 span {
-        display: block;
-        font-size: 2.5rem;
-      }
-      .header__container p {
-        font-size: 1rem;
-        margin: 20px auto;
-        max-width: 600px;
-      }
-      .header__btn .btn {
-        padding: 12px 24px;
-        font-size: 1rem;
-        cursor: pointer;
-        border: none;
-        border-radius: 6px;
-        background-color: #ed1d24;
-        color: #fff;
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-      }
-
-      /* OPENINGS CARDS */
+      /* Cards layout */
       .openings__grid {
         display: none;
-        margin: 40px auto;
-        gap: 20px;
+        margin-top: 80px; /* space from header */
+        gap: 40px;
         justify-content: center;
-        flex-wrap: wrap;
+        flex-wrap: wrap; /* allow wrap on smaller screens */
       }
       .openings__card {
         background: #fff;
         border-radius: 12px;
-        box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
         overflow: hidden;
         text-decoration: none;
         color: inherit;
-        width: 300px;
+        width: 340px; /* slightly wider */
         transition: all 0.4s ease;
         display: flex;
         flex-direction: column;
         align-items: center;
-        text-align: center;
+        text-align: left; /* align left for text */
         padding-bottom: 20px;
       }
       .openings__card:hover {
         transform: translateY(-10px);
-        box-shadow: 0 10px 24px rgba(0,0,0,0.2);
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
       }
       .openings__card img {
         width: 100%;
-        height: 180px;
+        height: 200px;
         object-fit: cover;
       }
       .openings__card h3 {
-        font-size: 1.3rem;
+        font-size: 1.4rem;
         margin: 15px 0 10px;
+        font-weight: bold;
+        text-align: center;
       }
       .openings__card p {
-        font-size: 0.9rem;
+        font-size: 0.95rem;
         color: #333;
         margin: 0 15px 10px;
-      }
-
-      /* MOBILE RESPONSIVE */
-      @media screen and (max-width: 768px) {
-        .nav__links {
-          position: fixed;
-          top: 70px;
-          right: -100%;
-          flex-direction: column;
-          background: #fff;
-          width: 200px;
-          height: calc(100% - 70px);
-          padding-top: 20px;
-          gap: 15px;
-          box-shadow: -2px 0 6px rgba(0,0,0,0.1);
-          transition: right 0.3s ease;
-        }
-        .nav__links.active {
-          right: 0;
-        }
-        .nav__menu__btn {
-          display: block;
-        }
-        .header__container h1 span {
-          font-size: 2rem;
-        }
-        .header__container p {
-          font-size: 0.95rem;
-        }
-        .openings__card {
-          width: 90%;
-        }
+        text-align: center;
       }
     </style>
   </head>
@@ -176,12 +108,12 @@
               <img src="assets/logo.png" alt="ND Western Logo" />
             </a>
           </div>
-          <div class="nav__menu__btn" id="menu-btn">
-            <i class="ri-menu-3-line"></i>
-          </div>
-        </div>
-        <ul class="nav__links" id="nav-links">
-          <li><a href="index.html">Home</a></li>
+ <div class="nav__menu__btn" id="menu-btn"> 
+   <i class="ri-menu-3-line"></i> </div> 
+        </div> <ul class="nav__links" id="nav-links"> 
+          <li><a href="index.html">Home</a></li> 
+           
+          
         </ul>
       </nav>
 
@@ -202,10 +134,14 @@
             <i class="ri-arrow-right-long-line"></i>
           </button>
         </div>
+        <ul class="socials">
+          
+        </ul>
       </div>
 
-      <!-- OPENINGS CARDS -->
+      <!-- OPENINGS CARDS (hidden by default) -->
       <div class="openings__grid container" id="openings-cards">
+        <!-- Internal Openings -->
         <a href="jobs.html" class="openings__card fly-in">
           <img src="assets/images/header-banner-1.jpg" alt="Internal Openings" />
           <div class="p-4">
@@ -213,6 +149,8 @@
             <p>Grow your career within ND Western. Explore current internal opportunities and staff mobility options.</p>
           </div>
         </a>
+
+        <!-- Employee Referral Program -->
         <a href="employee-referral.html" class="openings__card fly-in">
           <img src="assets/images/header-banner.jpg" alt="Employee Referral Program" />
           <div class="p-4">
@@ -223,7 +161,7 @@
       </div>
     </header>
 
-    <!-- SCRIPTS -->
+    <!-- Scripts -->
     <script src="https://unpkg.com/scrollreveal"></script>
     <script>
       const viewBtn = document.getElementById("view-openings");
@@ -247,13 +185,6 @@
           openingsCards.classList.add("fly-in");
         }, 1000);
       });
-
-      // MOBILE MENU TOGGLE
-      const menuBtn = document.getElementById("menu-btn");
-      const navLinks = document.getElementById("nav-links");
-      menuBtn.addEventListener("click", () => {
-        navLinks.classList.toggle("active");
-      });
     </script>
   </body>
-</html>
+</html> 
