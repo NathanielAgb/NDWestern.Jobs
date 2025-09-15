@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 
 :root {
-  --primary-color: #ed1d24;
+  --primary-color: #92D050;
   --primary-color-dark: #b80314;
   --white: #ffffff;
   --max-width: 1200px;
@@ -256,3 +256,4 @@ button:hover {
     background-color: #6aa63b; /* Slightly darker green on hover */
   }
 }
+
