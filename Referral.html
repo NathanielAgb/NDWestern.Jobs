@@ -94,6 +94,16 @@
         margin: 0 15px 10px;
         text-align: center;
       }
+
+      /* Optional: spinning gear animation */
+      .spin {
+        display: inline-block;
+        animation: spin 2s linear infinite;
+      }
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
     </style>
   </head>
   <body>
@@ -121,7 +131,7 @@
           <span></span>
           <span></span>
         </h1>
-        <!-- Professional Under Construction Message -->
+        <!-- Professional Under Construction Message with Gear Icon -->
         <p style="
             font-size: 1.8rem;
             color: #ffffff;
@@ -130,6 +140,7 @@
             margin-top: 50px;
             line-height: 1.5;
         ">
+          <i class="ri-settings-4-line spin" style="margin-right: 10px;"></i>
           This page is currently under maintenance and will be available soon. Thank you for your patience.
         </p>
         <div class="header__btn">
