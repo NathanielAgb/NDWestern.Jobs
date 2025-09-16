@@ -70,7 +70,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        text-align: left; /* default text-align for other cards */
+        text-align: left; /* align left for text */
         padding-bottom: 20px;
       }
       .openings__card:hover {
@@ -86,19 +86,19 @@
         font-size: 1.4rem;
         margin: 15px 0 10px;
         font-weight: bold;
-        text-align: center; /* center heading for all cards */
+        text-align: center;
       }
       .openings__card p {
         font-size: 0.95rem;
         color: #333;
         margin: 0 15px 10px;
-        text-align: center; /* center text for all cards */
+        text-align: center;
       }
     </style>
   </head>
   <body>
     <!-- HEADER -->
-    <header class="main">
+   <header class="main">
       <nav>
         <div class="nav__header">
           <div class="nav__logo">
@@ -112,6 +112,7 @@
         </div>
         <ul class="nav__links" id="nav-links">
           <li> <a href="index.html">Home</a> </li>
+         
         </ul>
       </nav>
 
@@ -146,24 +147,45 @@
           </div>
         </a>
 
-        <!-- Employee Referral Program (centered properly) -->
+        <!-- Employee Referral Program -->
         <a href="Referral.html" class="openings__card fly-in">
           <img src="assets/images/header-banner-3.jpg" alt="Employee Referral Program" />
-          <div class="p-4" style="text-align: center;">
+          <div class="p-4">
             <h3>Employee Referral Program</h3>
-            <p>
-              ND Western employees can recommend qualified professionals from outside the organization,
-              helping attract top talent and strengthen our workforce.
-            </p>
+            <p>ND Western employees can recommend qualified professionals from outside the organization, helping attract top talent and strengthen our workforce.</p>
           </div>
         </a>
       </div>
     </header>
 
     <!-- Scripts -->
-    <script src="https://unpkg.com/scrollreveal"></script>
+     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="main.js"></script>
-    <script>
+
+    <!-- Firebase Auth Integration -->
+    <script type="module">
+      // Import Firebase SDKs
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-analytics.js";
+      import { getAuth, sendSignInLinkToEmail, signInWithEmailLink } 
+        from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
+
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyD-A7LDO1SjJNRp5tKCfwJJyUO2czdDglY",
+        authDomain: "myform-project.firebaseapp.com",
+        projectId: "myform-project",
+        storageBucket: "myform-project.firebasestorage.app",
+        messagingSenderId: "296176283020",
+        appId: "1:296176283020:web:83aaf97c1fe1c38c6e3aa9",
+        measurementId: "G-X6ZP89KHZR"
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+      const auth = getAuth(app);
+
       const viewBtn = document.getElementById("view-openings");
       const heroContent = document.getElementById("hero-content");
       const openingsCards = document.getElementById("openings-cards");
@@ -174,17 +196,47 @@
         heroContent.classList.add("fly-in");
       });
 
-      // Handle hero -> openings transition
+      // Handle hero -> openings with email verification
       viewBtn.addEventListener("click", () => {
-        heroContent.classList.remove("fly-in"); // reset in case it's there
-        heroContent.classList.add("fly-out");
+        const email = prompt("Enter your ND Western email:");
+        if (!email || !email.endsWith("@ndwestern.com")) {
+          alert("Access restricted to ND Western staff.");
+          return;
+        }
 
-        setTimeout(() => {
+        sendSignInLinkToEmail(auth, email, {
+          url: window.location.href, // redirect back here
+          handleCodeInApp: true,
+        })
+        .then(() => {
+          window.localStorage.setItem("emailForSignIn", email);
+          alert("A login link has been sent to your ND Western email. Please check your inbox.");
+        })
+        .catch((error) => {
+          console.error("Error sending email:", error);
+          alert("Error sending verification email.");
+        });
+      });
+
+      // When user clicks the email link, complete sign-in
+      if (auth && window.location.href.includes("mode=signIn")) {
+        let email = window.localStorage.getItem("emailForSignIn");
+        if (!email) {
+          email = prompt("Please confirm your ND Western email:");
+        }
+        signInWithEmailLink(auth, email, window.location.href)
+        .then(() => {
+          window.localStorage.removeItem("emailForSignIn");
+          alert("Successfully signed in!");
           heroContent.style.display = "none";
           openingsCards.style.display = "flex";
           openingsCards.classList.add("fly-in");
-        }, 1000); // Wait for fly-out to finish
-      });
+        })
+        .catch((error) => {
+          console.error("Error signing in:", error);
+          alert("Invalid or expired login link.");
+        });
+      }
     </script>
   </body>
 </html>
