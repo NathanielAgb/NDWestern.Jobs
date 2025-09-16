@@ -53,10 +53,10 @@
       /* Cards layout */
       .openings__grid {
         display: none;
-        margin-top: 80px; /* space from header */
+        margin-top: 80px;
         gap: 40px;
         justify-content: center;
-        flex-wrap: wrap; /* allow wrap on smaller screens */
+        flex-wrap: wrap;
       }
       .openings__card {
         background: #fff;
@@ -65,12 +65,12 @@
         overflow: hidden;
         text-decoration: none;
         color: inherit;
-        width: 340px; /* slightly wider */
+        width: 340px;
         transition: all 0.4s ease;
         display: flex;
         flex-direction: column;
         align-items: center;
-        text-align: left; /* align left for text */
+        text-align: left;
         padding-bottom: 20px;
       }
       .openings__card:hover {
@@ -94,11 +94,32 @@
         margin: 0 15px 10px;
         text-align: center;
       }
+
+      /* Email form styles */
+      #email-form {
+        margin-top: 30px;
+        text-align: center;
+      }
+      #email-input {
+        padding: 10px;
+        width: 280px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+      }
+      #send-link-btn {
+        margin-top: 10px;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 6px;
+        background: #92D050;
+        color: white;
+        cursor: pointer;
+      }
     </style>
   </head>
   <body>
     <!-- HEADER -->
-   <header class="main">
+    <header class="main">
       <nav>
         <div class="nav__header">
           <div class="nav__logo">
@@ -111,8 +132,7 @@
           </div>
         </div>
         <ul class="nav__links" id="nav-links">
-          <li> <a href="index.html">Home</a> </li>
-         
+          <li><a href="index.html">Home</a></li>
         </ul>
       </nav>
 
@@ -123,9 +143,9 @@
           <span>Western Careers</span>
         </h1>
         <p>
-          Explore exciting opportunities with ND Western. Join a professional and
-          trusted team driving innovation, growth, and success across the energy
-          industry.
+          Explore exciting opportunities with ND Western. Join a professional
+          and trusted team driving innovation, growth, and success across the
+          energy industry.
         </p>
         <div class="header__btn">
           <button class="btn" id="view-openings">
@@ -136,41 +156,64 @@
         <ul class="socials"></ul>
       </div>
 
+      <!-- EMAIL VERIFICATION FORM (hidden by default) -->
+      <div id="email-form" class="hidden">
+        <h2>Verify Your ND Western Email</h2>
+        <input
+          type="email"
+          id="email-input"
+          placeholder="Enter your ND Western email"
+        />
+        <br />
+        <button id="send-link-btn">Send Verification Link</button>
+        <p id="email-message"></p>
+      </div>
+
       <!-- OPENINGS CARDS (hidden by default) -->
-      <div class="openings__grid container" id="openings-cards">
+      <div class="openings__grid container hidden" id="openings-cards">
         <!-- Internal Openings -->
         <a href="jobs.html" class="openings__card fly-in">
-          <img src="assets/images/header-banner-1.jpg" alt="Internal Openings" />
+          <img
+            src="assets/images/header-banner-1.jpg"
+            alt="Internal Openings"
+          />
           <div class="p-4">
             <h3>Internal Openings</h3>
-            <p>Grow your career within ND Western. Explore current internal opportunities and staff mobility options.</p>
+            <p>
+              Grow your career within ND Western. Explore current internal
+              opportunities and staff mobility options.
+            </p>
           </div>
         </a>
 
         <!-- Employee Referral Program -->
         <a href="Referral.html" class="openings__card fly-in">
-          <img src="assets/images/header-banner-3.jpg" alt="Employee Referral Program" />
+          <img
+            src="assets/images/header-banner.jpg"
+            alt="Employee Referral Program"
+          />
           <div class="p-4">
             <h3>Employee Referral Program</h3>
-            <p>ND Western employees can recommend qualified professionals from outside the organization, helping attract top talent and strengthen our workforce.</p>
+            <p>
+              ND Western employees can recommend qualified professionals from
+              outside the organization, helping attract top talent and strengthen
+              our workforce.
+            </p>
           </div>
         </a>
       </div>
     </header>
 
-    <!-- Scripts -->
-     <script src="https://unpkg.com/scrollreveal"></script>
-    <script src="main.js"></script>
-
-    <!-- Firebase Auth Integration -->
+    <!-- Firebase Scripts -->
     <script type="module">
-      // Import Firebase SDKs
       import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
-      import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-analytics.js";
-      import { getAuth, sendSignInLinkToEmail, signInWithEmailLink } 
-        from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
+      import {
+        getAuth,
+        sendSignInLinkToEmail,
+        isSignInWithEmailLink,
+        signInWithEmailLink,
+      } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
 
-      // Your web app's Firebase configuration
       const firebaseConfig = {
         apiKey: "AIzaSyD-A7LDO1SjJNRp5tKCfwJJyUO2czdDglY",
         authDomain: "myform-porject.firebaseapp.com",
@@ -178,65 +221,80 @@
         storageBucket: "myform-porject.firebasestorage.app",
         messagingSenderId: "296176283020",
         appId: "1:296176283020:web:83aaf97c1fe1c38c6e3aa9",
-        measurementId: "G-X6ZP89KHZR"
+        measurementId: "G-X6ZP89KHZR",
       };
 
-      // Initialize Firebase
+      // Init
       const app = initializeApp(firebaseConfig);
-      const analytics = getAnalytics(app);
       const auth = getAuth(app);
 
       const viewBtn = document.getElementById("view-openings");
       const heroContent = document.getElementById("hero-content");
+      const emailForm = document.getElementById("email-form");
       const openingsCards = document.getElementById("openings-cards");
+      const emailInput = document.getElementById("email-input");
+      const sendLinkBtn = document.getElementById("send-link-btn");
+      const emailMessage = document.getElementById("email-message");
 
-      // Animate hero on page load
-      window.addEventListener("DOMContentLoaded", () => {
-        heroContent.style.display = "block";
-        heroContent.classList.add("fly-in");
+      // Step 1: Show email form when "View Openings" is clicked
+      viewBtn.addEventListener("click", () => {
+        heroContent.classList.add("fly-out");
+        setTimeout(() => {
+          heroContent.style.display = "none";
+          emailForm.classList.remove("hidden");
+          emailForm.classList.add("fly-in");
+        }, 1000);
       });
 
-      // Handle hero -> openings with email verification
-      viewBtn.addEventListener("click", () => {
-        const email = prompt("Enter your ND Western email:");
-        if (!email || !email.endsWith("@ndwestern.com")) {
-          alert("Access restricted to ND Western staff.");
+      // Step 2: Send verification link
+      sendLinkBtn.addEventListener("click", async () => {
+        const email = emailInput.value.trim();
+
+        if (!email.endsWith("@ndwestern.com")) {
+          emailMessage.textContent = "❌ Please use your ND Western email.";
+          emailMessage.style.color = "red";
           return;
         }
 
-        sendSignInLinkToEmail(auth, email, {
-          url: window.location.href, // redirect back here
+        const actionCodeSettings = {
+          url: window.location.href, // return here after verification
           handleCodeInApp: true,
-        })
-        .then(() => {
+        };
+
+        try {
+          await sendSignInLinkToEmail(auth, email, actionCodeSettings);
           window.localStorage.setItem("emailForSignIn", email);
-          alert("A login link has been sent to your ND Western email. Please check your inbox.");
-        })
-        .catch((error) => {
-          console.error("Error sending email:", error);
-          alert("Error sending verification email.");
-        });
+          emailMessage.textContent =
+            "✅ Verification link sent! Please check your email.";
+          emailMessage.style.color = "green";
+        } catch (error) {
+          console.error(error);
+          emailMessage.textContent = "❌ Error sending link. Try again.";
+          emailMessage.style.color = "red";
+        }
       });
 
-      // When user clicks the email link, complete sign-in
-      if (auth && window.location.href.includes("mode=signIn")) {
-        let email = window.localStorage.getItem("emailForSignIn");
-        if (!email) {
-          email = prompt("Please confirm your ND Western email:");
+      // Step 3: Complete sign-in if returning from email link
+      window.addEventListener("load", async () => {
+        if (isSignInWithEmailLink(auth, window.location.href)) {
+          let email = window.localStorage.getItem("emailForSignIn");
+          if (!email) {
+            email = window.prompt("Please confirm your ND Western email");
+          }
+
+          try {
+            await signInWithEmailLink(auth, email, window.location.href);
+            window.localStorage.removeItem("emailForSignIn");
+            emailForm.style.display = "none";
+            openingsCards.classList.remove("hidden");
+            openingsCards.classList.add("fly-in");
+          } catch (error) {
+            console.error(error);
+            emailMessage.textContent = "❌ Verification failed.";
+            emailMessage.style.color = "red";
+          }
         }
-        signInWithEmailLink(auth, email, window.location.href)
-        .then(() => {
-          window.localStorage.removeItem("emailForSignIn");
-          alert("Successfully signed in!");
-          heroContent.style.display = "none";
-          openingsCards.style.display = "flex";
-          openingsCards.classList.add("fly-in");
-        })
-        .catch((error) => {
-          console.error("Error signing in:", error);
-          alert("Invalid or expired login link.");
-        });
-      }
+      });
     </script>
   </body>
 </html>
